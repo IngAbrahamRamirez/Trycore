@@ -1,0 +1,15 @@
+# Angular
+node_modules/
+dist/
+
+# Java
+target/
+
+# VSCode
+.vscode/
+
+# Logs
+*.log
+
+# Environment
+.env
