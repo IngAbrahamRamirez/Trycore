@@ -1,0 +1,22 @@
+# Angular
+frontend/app/node_modules/
+frontend/app/.angular/
+frontend/app/dist/
+
+# Spring Boot / Maven
+backend/api/target/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
