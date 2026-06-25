@@ -266,3 +266,31 @@ Herramienta: GPT
 "Perfecto, iniciemos con el commit para guardar los avances CRUD y demos inicio con la implementación del modelo"
 
 Resultado: Guía para la implementación del modelo.
+
+ID: PR-32
+Objetivo: Validación de que la implementación haya sido correcta revisando las tablas creadas en la ejecución, encontrar porque se produce la diferencia entre lo esperado y lo que resulta en la ejecución.
+Herramienta: GPT
+
+"[Captura de la terminal] Sí crea las 2 tablas, pero no está la columna projectid en activities"
+
+ID: PR-33
+Objetivo: Dar retroalimentación de la falla que se presentaba y confirmar su solución.
+Herramienta: GPT
+
+"Listo, no estaba implementado nullable = false) en el joicolumn"
+
+Resultado: Solicito unas validaciones extra para verificar que todo este bien.
+
+ID: PR-34
+Objetivo: Informar la diferencia entre lo esperado y el resultado real en la ejecución de las validaciones.
+Herramienta: GPT
+
+"Lo único que no muestra es "not null", lo demás incluyendo las llaves están"
+
+Resultado: Guia opcional para eliminar la tabla (drop) y ejecutar nuevamente para que la creación incluyera la restricción de "not null" teniendo en cuenta que una actividad sin proyecto no tiene sentido.
+
+ID: PR-35
+Objetivo: Iniciar con el desarrollo de la lógica de la aplicación.
+Herramienta: GPT
+
+"Listo, la tabla fue eliminada y creada nuevamente con la restricción "not null" perfecto todo para continuar"
