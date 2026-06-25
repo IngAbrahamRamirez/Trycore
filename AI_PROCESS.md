@@ -145,3 +145,11 @@ Objetivo: Empezar la implementación de la parte back del proyecto. La arquitect
 Herramienta: GPT
 
 "Me parece que es una excelente opción, guíame detalladamente en la implementación, iniciando por la parte back. Es importante que sea estético, pero el objetivo principal es que sea totalmente funcional"
+
+ID: PR-17
+Objetivo: Solucionar un detalle técnico en la instalación de postgreSQL (configuración Path) sin alterar el hilo principal que llevo con GPT.
+Herramienta: Gemini
+
+"psql --version no se ejecuta bien, no reconoce el comando bash ni la terminal"
+
+Resultado: Configuración correcta en el directorio lo que permitió que la terminal ubicara el programa
