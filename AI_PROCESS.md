@@ -242,3 +242,27 @@ Herramienta: GPT
 "La CRUD funciona a la perfección"
 
 Resultado: Resumen de las capas que ya están funcionando y han sido validadas, un analisis del problema especifico (valor ganado) previo a continuar con la implementación.
+
+ID: PR-29
+Objetivo: Brindar más contexto de lo que solicita el proyecto con variables, calculos y salidas esperadas.
+Herramienta: GPT
+
+"[captura tabla de datos calculados] - Nombre - Presupuesto total planificado (BAC — Budget at Completion) - Porcentaje de avance planificado a la fecha de corte - Porcentaje de avance real completado - Costo real incurrido hasta la fecha (AC — Actual Cost) Con esos datos, el sistema debe calcular automáticamente los siguientes indicadores por actividad y de forma consolidada por proyecto (ver imagen) El API también debe retornar la interpretación de CPI y SPI: si el proyecto está bajo presupuesto o sobre presupuesto, adelantado o atrasado. Un CPI mayor a 1 indica eficiencia en costos; menor a 1 indica que se está gastando más de lo que se avanza. El SPI funciona con la misma lógica pero sobre el cronograma."
+
+Resultado: Una imagen con un relacional y código, una infografía inutil para el desarrollo
+
+ID: PR-30
+Objetivo: Aclarar el resultado esperado del prompt anterior.
+Herramienta: GPT
+
+"No necesito imagenes, continuemos estructurando el proyecto con la información que te di"
+
+Resultado: Diseño del modelo con la información y una guía de implementación.
+
+ID: PR-31
+Objetivo: Indicaciones de como proceder para iniciar la implementación del modelo.
+Herramienta: GPT
+
+"Perfecto, iniciemos con el commit para guardar los avances CRUD y demos inicio con la implementación del modelo"
+
+Resultado: 
