@@ -153,3 +153,92 @@ Herramienta: Gemini
 "psql --version no se ejecuta bien, no reconoce el comando bash ni la terminal"
 
 Resultado: Configuración correcta en el directorio lo que permitió que la terminal ubicara el programa
+
+ID: PR-18
+Objetivo: Identificar como ajustar el comportamiento en el enlace entre spring y postgres ya que al ejecutarlos ambos buscan conectarse al puerto 8080.
+Herramienta: GPT
+
+"Al ejecutar ./mvnw spring-boot:run Web server failed to start. Port 8080 was already in use. Aunque más abajo dice Build success Pero al abrir el localhost en ese puerto se muestra una página que dice "EDB postgres Server is up and running.""
+
+resultado: Ajustar el puerto de spring boot para que corra en el 8081.
+
+ID: PR-19
+Objetivo: Encontrar el error en la creación del primer endpoint ya que el archivo señalaba un error en el nombre.
+Herramienta: GPT
+
+"Creé ese controlador en la carpeta de "controller" con el nombre HealtController.java, pero esta generando error indicando que the public type HealthContoller must be defined in its own file"
+
+resultado: Error de escritura, faltaba una "h" en el nombre del archivo.
+
+ID: PR-20
+Objetivo: Validar que la estructura implementada funcionara con spring boot y postgres previo a continuar, esperaba una confirmación después de dar una guía para testear el funcionamiento en los puertos con el endpoint.
+Herramienta: GPT
+
+"Todo hasta este punto funciona perfecto, continuemos"
+
+Resultado: Resumen de las herramientas ya validadas y guía para el inicio de modelado del dominio.
+
+ID: PR-21
+Objetivo: Probar que los nuevos archivos implementados en las subcarpetas de api (core,dto,entity, etc) funcionaran bien y sin fricción con el resto del desarrollo.
+Herramienta: GPT
+
+"Validemos el comportamiento hasta este punto para verificar que esto ultimo funciona bien antes de seguir"
+
+Resultado: Listado de ejecuciones y resultados esperados de cada uno para confirmar el comportamiento.
+
+ID: PR-22
+Objetivo: Confirmar que el comportamiento esperado y el actual del sistema son el mismo previo a continuar con los pasos siguientes del proyecto.
+Herramienta: GPT
+
+"Localhost funciona
+La tabla projects existe con las variables y los tipos incluyendo el id tipo uuid"
+
+Resultado: Confirmación de que la base tecnica está correctamente implementada.
+
+ID: PR-23
+Objetivo: Validar si se me estaba pasando algo por alto ya que el paso que indicaba GPT no identificaba como implementarlo, con esta consulta y una instrucción más especifica de su parte pude identificar que no había cambios con respecto a lo que ya estaba en el proyecto y solo estaba siendo repetitivo.
+Herramienta: GPT
+
+"Especifica que actualizar en global, el archivo de errorresponse ya está creado con el código"
+
+Resultado: Comprobación de archivos bien configurados y ejecución correcta hasta este punto.
+
+ID: PR-24
+Objetivo: Confirmar que todo operaba correctamente con la respuesta de consola para continuar.
+Herramienta: GPT
+
+"Build success"
+
+Resultado: Guía con los pasos siguientes para continuar con el desarrollo del proyecto.
+
+ID: PR-25
+Objetivo: Confirmar que todo operaba correctamente con la respuesta de consola para continuar.
+Herramienta: GPT
+
+"BUILD SUCCESS, continuemos"
+
+Resultado: Resumen de las capas que ya están implementadas y conectadas en el proyecto, seguidas de instrucciones.
+
+ID: PR-26
+Objetivo: Realizar las pruebas de CRUD, dentro de los pasos del prompt anterior había una serie de opciones (Postman, Thunder Client o la extensión REST Client) para ejecutar las pruebas, me decante por la extensión REST Client por el control del código y la integración con GIT, pero no la había usado antes por lo que pedí que me guíara en su uso.
+Herramienta: GPT
+
+"Instale la extensión de rest client, guíame para sacarle el mayor provecho"
+
+Resultado: Guía en la configuración de los archivos .http para el uso de la extensión.
+
+ID: PR-27
+Objetivo: Identificar y corregir la implementación de una variable en uno de los archivos http.
+Herramienta: GPT
+
+"projectid genera error, no lo hemos definido dentro de las variables, pero al venir de la respuesta y ser un valor dinámico no considero que deba inicializarse con un valor arbitrario ¿cómo lo podemos resolver?"
+
+Resultado: Se plantean 3 caminos principales que pueden darle solución al error, el primero es una opción manual (más estable, simple y paara la situación fácil de evaluar), la segunda es capturar automaticamente o la tercera, crear un archivo de entorno en donde igual es necesario asignar el UUID. En este caso me decante por la segunda opción al ser la más dinámica.
+
+ID: PR-28
+Objetivo: Darle continuidad al proceso después de implementar la corrección y probar que funciona la CRUD en la conexión.
+Herramienta: GPT
+
+"La CRUD funciona a la perfección"
+
+Resultado: Resumen de las capas que ya están funcionando y han sido validadas, un analisis del problema especifico (valor ganado) previo a continuar con la implementación.
