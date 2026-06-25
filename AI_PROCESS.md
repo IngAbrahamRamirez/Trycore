@@ -265,4 +265,4 @@ Herramienta: GPT
 
 "Perfecto, iniciemos con el commit para guardar los avances CRUD y demos inicio con la implementación del modelo"
 
-Resultado: 
+Resultado: Guía para la implementación del modelo.
