@@ -1,0 +1,62 @@
+@host=http://localhost:8081
+
+GET {{host}}/api/health
+
+@host=http://localhost:8081
+
+### Create Project
+# @name createProject
+POST {{host}}/api/projects
+Content-Type: application/json
+
+{
+  "name": "Migration Project",
+  "description": "Legacy migration to cloud",
+  "startDate": "2026-06-01",
+  "endDate": "2026-12-31",
+  "status": "PLANNED"
+}
+
+### Create Project
+POST {{host}}/api/projects
+Content-Type: application/json
+
+{
+  "name": "Migration Project",
+  "description": "Legacy migration",
+  "startDate": "2026-06-01",
+  "endDate": "2026-12-31",
+  "status": "PLANNED"
+}
+
+### Get All Projects
+GET {{host}}/api/projects
+
+> {%
+client.global.set("projectId", response.body.id);
+%}
+
+### Get Project By Id
+
+GET {{host}}/api/projects/{{createProject.response.body.id}}
+
+### Update Project
+
+PUT {{host}}/api/projects/{{createProject.response.body.id}}
+Content-Type: application/json
+
+{
+  "name": "Migration Project Updated",
+  "description": "Updated Description",
+  "startDate": "2026-06-01",
+  "endDate": "2026-12-31",
+  "status": "IN_PROGRESS"
+}
+
+### Delete Project
+
+DELETE {{host}}/api/projects/{{createProject.response.body.id}}
+
+### Project Not Found
+
+GET {{host}}/api/projects/00000000-0000-0000-0000-000000000000
