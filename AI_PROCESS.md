@@ -74,7 +74,7 @@ Herramienta: GPT
 
 "Antes de hacer el primer commit es fundamental que se implementen estas condiciones como parte del proceso y buenas practicas: La estructura de ramas debe seguir el flujo estándar: main para producción, develop como rama de integración, ramas feature/* por cada funcionalidad, y al menos una rama release/* antes del merge final a main. Cada feature debe integrarse a develop mediante un Pull Request, aunque trabajes solo. Los mensajes de commit deben ser descriptivos y en imperativo: Add EVM calculation service, Fix CPI edge case when AC is zero. Mensajes como fix, cambios o wip no son aceptables."
 
-Resultado: Corrección de la sugerencia inicial de hacer commit directo a main y guía con nuevos pasos.
+Resultado: Corrección de la sugerencia inicial de hacer commit directo a main y guía con nuevos pasos
 
 ID: PR-08
 Objetivo: Corrección de error humano al casi cargar los archivos front en la rama back.
@@ -85,9 +85,63 @@ Herramienta: GPT
 Resultado: Guía con pasos para deshacer el commit antes del push y verificación de estructura.
 
 ID: PR-09
-Objetivo: reestructuración arquitectura previo a cargar al repositorio.
+Objetivo: Corregir la propuesta de arquitectura en la guía del punto anterior para separar desde el primer commit front de back.
 Herramienta: GPT
 
-Me genera dudas cargar toda la estructura del proyecto en la rama "feature/backend-initial-setup", no debería crear la rama de front también y cargar desde el inicio la estructura separada? Guiame paso a paso para implementarlo con las mejores practicas, commit por commit incluyendo la rama en la que debo ejecutar cada comando y la carpeta local en la que debo estar ubicado al momento de correrlos
+"Me genera dudas cargar toda la estructura del proyecto en la rama "feature/backend-initial-setup", no debería crear la rama de front también y cargar desde el inicio la estructura separada? Guiame paso a paso para implementarlo con las mejores practicas, commit por commit incluyendo la rama en la que debo ejecutar cada comando y la carpeta local en la que debo estar ubicado al momento de correrlos"
 
-Resultado: Nueva guía diferenciando las ramas de back y front desde el primer commit
+ID: PR-10
+Objetivo: Validar que la carga de archivos fue adecuada, posterior a una captura sin texto la respuesta es que se habían cargado archivos que no debían subirse por su peso y cantidad.
+Herramienta: GPT
+
+Resultado: Identificación de un error temprano.
+
+"Se eliminaron los archivos de AI process y .git ignore, recupere el AI process, pero el de ignorar no estaba abierto y por eso debió cargar todo"
+
+Resultado: Indicaciones para crear nuevamente el archivo .gitignore y repetición de algunas instrucciones que parecían ignorar el contexto.
+
+ID: PR-11
+Objetivo: Dado que en la respuesta anterior estaba siendo repetitivo e ignorando el nuevo contexto opte por recontextualizar la conversación brindando un resumen para retomar desde ahí.
+Herramienta: GPT
+
+"Retomemos desde que se hizo una rama develop en la que se hizo un commit con las carpetas que existian (incluyendo app y api que estaban creadas ya) y una rama feature back, como debemos continuar?"
+
+Resultado: Nuevo plan de acción teniendo en cuenta el contexto real de las ultimas acciones.
+
+ID: PR-12
+Objetivo: Previo al commit que cargaría adecuadamente el proyecto valide que estuvieran los archivos adecuadamente.
+Herramienta: GPT
+
+"[captura de carpetas del proyecto] Así debe quedar para el commit?"
+
+Resultado: Confirmación y guía de próximos pasos
+
+ID: PR-13
+Objetivo: Resolver un error generado al momento de intentar cambiar de rama ya que algunos archivos se tomaron como nuevos y git no les estaba haciendo seguimiento, no estaban incluidos en el commit.
+Herramienta: GPT
+
+"[Captura error de consola] Hice el commit de back y al cambiar de rama genera esto"
+
+Resultado: Nuevo commit con los archivos necesarios y organización de los archivos de documentación en el sistema de versiones.
+
+ID: PR-14
+Objetivo: Retomar el plan de trabajo inicial, la respuesta anterior proponía profundizar en la parte back.
+Herramienta: GPT
+
+"Prosigamos primero cargando la rama front, ya creé la rama feature front, pero al hacer los commits agregando la carpeta frontend/app dice que no hay nada para commit"
+
+Resultado: Ejeucte pruebas de los archivos con algunos comandos git y ya se habían cargado con el commit inicial en la rama develop por lo que sin cambios git no encontraba nada que cargar en el commit, continuando con esa información procedo a configurar angular profesionalmente en lugar de commits artificiales unicamente de estructura.
+
+ID: PR-15
+Objetivo: Inicio desarrollo de la solución. Tomé las partes que menciona la situación con relación a la estructura front y back del proyecto sin ahondar aún en formulas ni datos.
+Herramienta: GPT
+
+"Queremos construir una herramienta interna para que los líderes de proyecto puedan registrar el avance de sus actividades y entender, en tiempo real, si su proyecto va bien o mal en términos de cronograma y presupuesto. Una aplicación fullstack que permita gestionar proyectos y sus actividades, y que calcule automáticamente los indicadores. Backend Necesitamos una API REST que exponga operaciones para crear, editar y eliminar proyectos y actividades. Cada actividad debe registrar unos datos, el API también debe retornar la interpretación Frontend Un dashboard donde el líder de proyecto pueda ingresar y editar sus actividades, y ver el resultado del análisis en tiempo real. Debe incluir la tabla de actividades con sus indicadores calculados, los indicadores consolidados del proyecto, una indicación visual. Tiene más detalle, pero en este caso no nos es significativo el lado de datos y formulas, lo primero que debemos establecer es la parte estructural de front y back con conexiones api y demás como bases del proyecto"
+
+Resultado: Plantea la arquitectura con la que podemos implementar la aplicación.
+
+ID: PR-16
+Objetivo: Empezar la implementación de la parte back del proyecto. La arquitectura planteada por GPT es un desarrollo que permite la escalabilidad y mantiene la flexibilidad al no tener aún datos se mantiene como un desarrollo abstracto.
+Herramienta: GPT
+
+"Me parece que es una excelente opción, guíame detalladamente en la implementación, iniciando por la parte back. Es importante que sea estético, pero el objetivo principal es que sea totalmente funcional"
