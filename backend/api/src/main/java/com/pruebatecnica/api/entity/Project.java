@@ -3,11 +3,12 @@ package com.pruebatecnica.api.entity;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import com.pruebatecnica.api.core.enums.ProjectStatus;
-
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+import com.pruebatecnica.api.core.enums.ProjectStatus;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @Table(name = "projects")
 @Getter
@@ -16,6 +17,10 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class Project {
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "project")
+    private List<Activity> activities;
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
