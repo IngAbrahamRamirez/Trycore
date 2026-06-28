@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.pruebatecnica.api.entity.Activity;
+import com.pruebatecnica.api.domain.entity.Activity;
 
 public interface ActivityRepository
         extends JpaRepository<Activity, UUID> {

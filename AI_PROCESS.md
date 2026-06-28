@@ -294,3 +294,160 @@ Objetivo: Iniciar con el desarrollo de la lógica de la aplicación.
 Herramienta: GPT
 
 "Listo, la tabla fue eliminada y creada nuevamente con la restricción "not null" perfecto todo para continuar"
+
+ID: PR-36
+Objetivo: Validar que la forma en que se desarrollaron los calculos permita la implementación de un registro en el avance de proyectos evaluando que es lo que pide la prueba y también cual es el alcance del proyecto.
+Herramienta: GPT
+
+"Si perfecto, Pruebas unitarias. Toda la lógica de cálculo EVM debe estar cubierta con pruebas unitarias. Esto incluye los casos borde: qué pasa cuando AC es cero, cuando no hay actividades, cuando el avance real es cero y cada endpoint debe test de integración que valide el contrato de respuesta.
+
+Antes de realizar e implementar los test me gustaría validar que estemos cumpliendo con las actividades que propone el requerimiento de funcionamiento front y que efectivamente el usuario pueda realizar estos procesos en la aplicación (comprendiendo que aún no se ha desarrollado nada front) teniendo en cuenta que por lo que comprendo se debe llevar una trazabilidad de los proyectos y por ahora los cálculos no tienen en cuenta algún historico, sé que el valor ganado es como una fotografia del instante en que se evalua, pero me gustaría estar seguro antes de implementar test en calculos mal formulados. 
+
+Requerimiento front 
+
+"Un dashboard donde el líder de proyecto pueda ingresar y editar sus actividades, y ver el resultado del análisis en tiempo real. Debe incluir la tabla de actividades con sus indicadores calculados, los indicadores consolidados del proyecto, una indicación visual del estado de CPI y SPI, y una gráfica que compare PV, EV y AC por actividad."
+
+Resultado: Teniendo en cuenta los plazos y el alcance de la prueba he optado por modificar un poco el funcionamiento para dejar un proyecto que pueda escalarse, dejando la puerta abierta para una eventual implementación de historico.
+
+ID: PR-37
+Objetivo: Trazar el plan de trabajo bajo la nueva decisión de dejar la puerta abierta a la escalabilidad de los registros.
+Herramienta: GPT
+
+"Está bien, entonces ajustemos lo que pueda ser necesario para dejarlo totalmente escalable para implementar luego el registro y continuemos con lo correspondiente a la prueba"
+
+Resultado: Una respuesta teorica explicando la arquitectura propuesta junto con una explicación de lo que no haría, adicional profundiza en los beneficios de esos ajustes para la implementación de pruebas.
+
+ID: PR-38
+Objetivo: Iniciar con la implementación de ajustes.
+Herramienta: GPT
+
+"Sí perfecto, implementemos esa mejora, el encapsulamiento con eso sería mucho mejor"
+
+Resultado: Una guía para refactorizar un poco el archivo de calculos para cambiar la forma en que se reciben y devuelven los datos unificando todos los datos calculados en un metodo que internamente llama a los demás generando una unica respuesta con toda la información, lo que va a facilitar las pruebas y el uso de datos en el front, se implemento el patrón de diseño Facade (encapsular lógica compleja detrás de un solo método).
+
+ID: PR-39
+Objetivo: Notificar la implementación del refactor y dar aprobación para implementar dentro de la respuesta la interpretación de resultados.
+Herramienta: GPT
+
+"Listo el refactor y estoy de acuerdo con el ajuste de incluir los mensajes de interpretación en la respuesta"
+
+Resultado: Respuesta con profundización teorica y opciones de lo que se podría implementar más adelante, mejoras y ajustes que se podrían implementar para mejorar el proyecto.
+
+ID: PR-40
+Objetivo: Retomar el flujo de conversación hacia el desarrollo y establecer un orden de tareas antes de implementar mejoras.
+Herramienta: GPT
+
+"Ok, pero continuemos con el flujo también de desarrollo porque esta conversación está siendo muy teorica, iniciemos implementando los métodos de interpretación y continuemos con las pruebas, una vez comprobemos y ajustemos hasta que las pruebas estén bien continuamos."
+
+Resultado: Metodos de validación para identificar los casos de acuerdo al resultado de los calculos de spi y cpi junto con metodos de asignación de mensaje para cada caso y una prueba para validar que la refactorización y la inclusión de los nuevos metodos funcionen bien.
+
+ID: PR-41
+Objetivo: Iniciar con la implementación de las pruebas en el proyecto.
+Herramienta: GPT
+
+"Perfecto, iniciemos con la implementación de pruebas"
+
+Resultado: Guía para la implementación de la primer prueba para validar que se ejecuten las pruebas y todo se encuentre bien configurado.
+
+
+ID: PR-42
+Objetivo: Dar visto bueno para continuar con la implementación de pruebas.
+Herramienta: GPT
+
+"Tests run: 2, Failures: 0, Errors: 0, Skipped: 0 Build success"
+
+Resultado: Explicación de la propuesta de implementación de los test junto con la implementación de excepciones desde las variables (para que los datos ingresados tengan sentido antes de intentar realizar cualquier calculo).
+
+ID: PR-43
+Objetivo: Retroalimentar sobre el código generado al no identificar que fuera a correr como se esperaba.
+Herramienta: GPT
+
+"Vale, en ese código no encuentro que las validaciones llamen a la clase que envia el mensaje de alerta"
+
+Resultado: Corrección en el código teniendo en cuenta la comunicación con las clase que envia el mensaje al usuario.
+
+ID: PR-44
+Objetivo: Ajustar el desarrollo para que hubiera una clase de validación porque todo estaba en el mismo archivo de los calculos.
+Herramienta: GPT
+
+"Separemos las validaciones en una clase nueva que se encargue de pasar los datos para hacer los calculos solo si son datos validos"
+
+Resultado: Ajuste con la creación de archivos separados que se comunican manteniendo responsabilidades individuales.
+
+ID: PR-45
+Objetivo: Encaminar el flujo de trabajo antes de incorporar pruebas o front en añadir el modulo usuarios dentro de la arquitectura para tener la estrucutura completa antes de seguir.
+Herramienta: GPT
+
+"Listas las validaciones, antes de continuar con los test (que sabemos van a correr y solo es programarlos) debemos incluir el modulo de usuarios con relacion 1 n con proyectos, incluyendo un usuario y contraseña para tener historial de las actividades por proyecto y que cada usuario pueda ver sus proyectos, actualizarlos y ver el avance con la evaluación en tiempo real"
+
+Resultado: Una propuesta con el nuevo flujo de trabajo incorporado en el flujo principal.
+
+ID: PR-46
+Objetivo: Confirmar aprobación para implementar las sugerencias y el nuevo plan de trabajo.
+Herramienta: GPT
+
+Resultado: Guía de implementación para la auditoria antes de incluir usuarios.
+
+ID: PR-46
+Objetivo: Especificar el paso a paso para implementar la auditoria de la forma correcta para evitar asumir información o pasos que puedan retrasar el proceso.
+Herramienta: GPT
+
+"Me gusta la implementación para auditar, pero falta detalle, profundiza en el paso a paso para hacerlo bien y optimizar el tiempo en este desarrollo"
+
+Resultado: Profundización en los pasos incluyendo las rutas y los archivos que debían crearse para implementar adecuadamente la auditoria
+
+ID: PR-45
+Objetivo: Encaminar el flujo de trabajo antes de incorporar pruebas o front en añadir el modulo usuarios dentro de la arquitectura para tener la estrucutura completa antes de seguir.
+Herramienta: GPT
+
+"El archivo AuditableEntity generaba error porque no tenía los imports adecuados, lo resolví, pero en JpaAuditingConfig los imports que incluí no se ejecutan bien, especialmente import org.springframework.data.jpa.config.EnableJpaAuditing; de ahora en adelante debes incluir los imports necesarios para cada archivo y validar que estén los paquetes y extensiones necesarios para la incorporación de código nuevo"
+
+Resultado: Genero el import correcto junto con una lista de puntos que se volveran obligatorias en las siguientes respuestas como validación de paquetes, imports, ruta de implementación, etc.
+
+ID: PR-46
+Objetivo: Confirmar el nuevo metodo de trabajo y confirmar que las correcciones corrieron a la perfección.
+Herramienta: GPT
+
+"Sí, considero que ese nuevo modo de trabajar nos va a optimizar la forma de trabajar y aseguramos no avanzar sin haber construido todo lo que se necesita en cada etapa, la ejecución de ./mvnw clean compile funcionó bien"
+
+Resultado: Modificaciones en la forma de manejar los id´s y validación del funcionamiento hasta la BD con los ajustes.
+
+ID: PR-47
+Objetivo: Mostrar resultado de la prueba.
+Herramienta: GPT
+
+"[Insersión de imagen con el resultado de la tabla]"
+
+Respuesta: Las tablas de auditoria no están funcionando bien y no se crearon las columnas de trazabilidad
+
+ID: PR-48
+Objetivo: Dar el contexto solicitado junto con lo que considero que podría ser la solución.
+Herramienta: GPT
+
+"[Código de 3 archivos] Creería que puede ser necesario borrar la base y volverlo a ejecutar para que lo cree las tablas con los datos de auditoria, te comparto el codigo de los archivos solicitados para auditoria"
+
+Resultado: Validaciones e intentos que permitieran seguir sin borrar la base de datos.
+
+ID: PR-49
+Objetivo: Dar el contexto solicitado.
+Herramienta: GPT
+
+"[Código de la terminal relacionado con el funcionamiento de hibernate]"
+
+Resultado: Validación de las soluciones intermedias
+
+ID: PR-50
+Objetivo: Respuesta de la consulta en la BD sobre la columna.
+Herramienta: GPT
+
+"no existe la columna «created_at»"
+
+Resultado: Consultas SQL para validar que fuera la BD correcta, que estuviera publica y que no estén las tablas y columnas que deben crearse al levantar el servicio.
+
+ID: PR-51
+Objetivo: identificar la falla que impide la creación de las columnas de auditoria.
+Herramienta: GPT
+
+"[Bloque de código relacionado a hibernate cuando se estaba subiendo el servicio]"
+
+Resultado: Identificación de la falla y solución, eliminar la BD y subir el servicio para que se cree de 0 con los nuevos campos.

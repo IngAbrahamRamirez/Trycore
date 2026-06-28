@@ -1,7 +1,6 @@
-package com.pruebatecnica.api.entity;
+package com.pruebatecnica.api.domain.entity;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,6 +16,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.pruebatecnica.api.domain.audit.AuditableEntity;
 
 @Entity
 @Table(name = "activities")
@@ -24,11 +24,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Activity {
+
+public class Activity extends AuditableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
 
     private String name;
 

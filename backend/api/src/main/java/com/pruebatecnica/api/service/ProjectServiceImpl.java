@@ -5,9 +5,9 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.pruebatecnica.api.domain.entity.Project;
 import com.pruebatecnica.api.dto.request.ProjectRequest;
 import com.pruebatecnica.api.dto.response.ProjectResponse;
-import com.pruebatecnica.api.entity.Project;
 import com.pruebatecnica.api.exception.ResourceNotFoundException;
 import com.pruebatecnica.api.repository.ProjectRepository;
 
@@ -19,6 +19,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     private final ProjectRepository projectRepository;
 
+    @SuppressWarnings("null")
     @Override
     public ProjectResponse create(ProjectRequest request) {
 

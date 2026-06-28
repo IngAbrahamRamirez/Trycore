@@ -1,13 +1,13 @@
-package com.pruebatecnica.api.entity;
+package com.pruebatecnica.api.domain.entity;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
 import com.pruebatecnica.api.core.enums.ProjectStatus;
+import com.pruebatecnica.api.domain.audit.AuditableEntity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 @Table(name = "projects")
@@ -16,15 +16,11 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Project {
+public class Project extends AuditableEntity {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "project")
     private List<Activity> activities;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
 
     @Column(nullable = false)
     private String name;
