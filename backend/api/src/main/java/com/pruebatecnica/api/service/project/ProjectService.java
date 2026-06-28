@@ -1,4 +1,4 @@
-package com.pruebatecnica.api.service;
+package com.pruebatecnica.api.service.project;
 
 import java.util.List;
 import java.util.UUID;

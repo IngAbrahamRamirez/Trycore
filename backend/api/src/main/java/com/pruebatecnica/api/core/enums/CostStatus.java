@@ -1,4 +1,4 @@
-package com.pruebatecnica.api.domain.enums;
+package com.pruebatecnica.api.core.enums;
 
 public enum CostStatus {
 

@@ -5,8 +5,8 @@ import java.math.RoundingMode;
 
 import org.springframework.stereotype.Service;
 
-import com.pruebatecnica.api.domain.enums.CostStatus;
-import com.pruebatecnica.api.domain.enums.ScheduleStatus;
+import com.pruebatecnica.api.core.enums.CostStatus;
+import com.pruebatecnica.api.core.enums.ScheduleStatus;
 import com.pruebatecnica.api.domain.evm.EvmInput;
 import com.pruebatecnica.api.domain.evm.EvmResult;
 

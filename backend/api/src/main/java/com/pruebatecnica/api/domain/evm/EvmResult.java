@@ -2,8 +2,8 @@ package com.pruebatecnica.api.domain.evm;
 
 import java.math.BigDecimal;
 
-import com.pruebatecnica.api.domain.enums.CostStatus;
-import com.pruebatecnica.api.domain.enums.ScheduleStatus;
+import com.pruebatecnica.api.core.enums.CostStatus;
+import com.pruebatecnica.api.core.enums.ScheduleStatus;
 
 public record EvmResult(
 
