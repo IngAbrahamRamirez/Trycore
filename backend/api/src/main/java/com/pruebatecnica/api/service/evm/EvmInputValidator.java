@@ -9,6 +9,9 @@ import com.pruebatecnica.api.exception.InvalidEvmInputException;
 @Component
 public class EvmInputValidator {
 
+    private static final BigDecimal ZERO = BigDecimal.ZERO;
+    private static final BigDecimal HUNDRED = BigDecimal.valueOf(100);
+
     public void validate(EvmInput input) {
 
         if (input == null) {
@@ -17,11 +20,11 @@ public class EvmInputValidator {
 
         validatePositive(input.bac(), "BAC");
 
-        validatePositive(input.actualCost(), "Actual Cost");
-
         validatePercentage(input.plannedPercentage(), "Planned percentage");
 
         validatePercentage(input.completedPercentage(), "Completed percentage");
+
+        validatePositive(input.actualCost(), "Actual Cost");
     }
 
     private void validatePositive(BigDecimal value, String field) {
@@ -30,7 +33,7 @@ public class EvmInputValidator {
             throw new InvalidEvmInputException(field + " cannot be null.");
         }
 
-        if (value.compareTo(BigDecimal.ZERO) < 0) {
+        if (value.compareTo(ZERO) < 0) {
             throw new InvalidEvmInputException(field + " cannot be negative.");
         }
     }
@@ -41,12 +44,11 @@ public class EvmInputValidator {
             throw new InvalidEvmInputException(field + " cannot be null.");
         }
 
-        if (value.compareTo(BigDecimal.ZERO) < 0 ||
-            value.compareTo(BigDecimal.valueOf(100)) > 0) {
+        if (value.compareTo(ZERO) < 0 ||
+                value.compareTo(HUNDRED) > 0) {
 
             throw new InvalidEvmInputException(
-                    field + " must be between 0 and 100."
-            );
+                    field + " must be between 0 and 100.");
         }
     }
 

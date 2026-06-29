@@ -60,10 +60,10 @@ public class EvmCalculationService {
     private BigDecimal divide(BigDecimal dividend, BigDecimal divisor) {
 
     if (divisor == null || divisor.compareTo(BigDecimal.ZERO) == 0) {
-        return BigDecimal.ZERO;
+        return BigDecimal.ZERO.setScale(SCALE, RoundingMode.HALF_UP);
     }
 
-    return dividend.divide(divisor, SCALE, ROUNDING);
+    return dividend.divide(divisor, SCALE, ROUNDING).setScale(SCALE, RoundingMode.HALF_UP);
 }
 
     private BigDecimal percentage(BigDecimal value) {
