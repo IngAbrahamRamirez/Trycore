@@ -2,32 +2,28 @@
 ### VARIABLES
 ##################################################
 @host=http://localhost:8081
-@userId=
-@projectId=
+@userId=d489df56-b81c-45b5-aa0c-b71af63c8e0b
 
 ##################################################
 ### CREATE
 ##################################################
 
-POST {{host}}/api/projects
+POST {{host}}/api/users
 Content-Type: application/json
 
 {
-    "userId":"{{userId}}",
-    "name":"Sistema ERP",
-    "description":"Proyecto principal",
-    "startDate":"2026-06-01",
-    "endDate":"2026-12-31",
-    "status":"PLANNED"
+    "firstName":"Abraham",
+    "lastName":"Ramirez",
+    "email":"abraham@test.com",
+    "password":"12345678"
 }
-
 ###
 
 ##################################################
 ### FIND ALL
 ##################################################
 
-GET {{host}}/api/projects
+GET {{host}}/api/users
 
 ###
 
@@ -35,7 +31,7 @@ GET {{host}}/api/projects
 ### FIND BY ID
 ##################################################
 
-GET {{host}}/api/projects/{{projectId}}
+GET {{host}}/api/users/{{userId}}
 
 ###
 
@@ -43,16 +39,14 @@ GET {{host}}/api/projects/{{projectId}}
 ### UPDATE
 ##################################################
 
-PUT {{host}}/api/projects/{{projectId}}
+PUT {{host}}/api/users/{{userId}}
 Content-Type: application/json
 
 {
-    "userId":"{{userId}}",
-    "name":"Sistema ERP V2",
-    "description":"Proyecto actualizado",
-    "startDate":"2026-06-01",
-    "endDate":"2026-12-31",
-    "status":"IN_PROGRESS"
+    "firstName":"Abraham",
+    "lastName":"Ramirez Updated",
+    "email":"abraham@test.com",
+    "password":"123456"
 }
 
 ###
@@ -61,7 +55,7 @@ Content-Type: application/json
 ### DELETE
 ##################################################
 
-DELETE {{host}}/api/projects/{{projectId}}
+DELETE {{host}}/api/users/{{userId}}
 
 ###
 
@@ -69,4 +63,16 @@ DELETE {{host}}/api/projects/{{projectId}}
 ### NEGATIVE TESTS
 ##################################################
 
-GET {{host}}/api/projects/00000000-0000-0000-0000-000000000000
+GET {{host}}/api/users/00000000-0000-0000-0000-000000000000
+
+###
+
+POST {{host}}/api/users
+Content-Type: application/json
+
+{
+    "firstName":"Duplicate",
+    "lastName":"User",
+    "email":"abraham@test.com",
+    "password":"123456"
+}
