@@ -46,7 +46,7 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     @Transactional(readOnly = true)
     public ActivityResponse findById(UUID id) {
-        return activityMapper.toResponse(activityValidator.validateExists(id));
+        return activityMapper.toResponse(activityValidator.validateActivity(id));
     }
 
     @Override
@@ -62,7 +62,7 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public ActivityResponse update(UUID id, ActivityRequest request) {
 
-        Activity activity = activityValidator.validateExists(id);
+        Activity activity = activityValidator.validateActivity(id);
 
         Project project = activityValidator.validateProject(request.getProjectId());
 
@@ -77,7 +77,7 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public void delete(UUID id) {
 
-        Activity activity = activityValidator.validateExists(id);
+        Activity activity = activityValidator.validateActivity(id);
 
         activityRepository.delete(activity);
     }

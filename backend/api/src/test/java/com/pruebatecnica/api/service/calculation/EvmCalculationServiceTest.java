@@ -8,9 +8,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import com.pruebatecnica.api.domain.evm.EvmInput;
-import com.pruebatecnica.api.domain.evm.EvmResult;
+import com.pruebatecnica.api.dto.common.MetricsResponse;
 import com.pruebatecnica.api.service.evm.EvmCalculationService;
+import com.pruebatecnica.api.service.evm.EvmInputValidator;
+import com.pruebatecnica.api.service.evm.EvmInput;
 
 class EvmCalculationServiceTest {
 
@@ -18,7 +19,9 @@ class EvmCalculationServiceTest {
 
     @BeforeEach
     void setUp() {
-        service = new EvmCalculationService(null);
+
+        service = new EvmCalculationService(new EvmInputValidator());
+
     }
 
     @Test
@@ -30,36 +33,33 @@ class EvmCalculationServiceTest {
         EvmInput input = new EvmInput(
 
                 new BigDecimal("1000"), // BAC
-
-                new BigDecimal("40"), // Planned %
-
-                new BigDecimal("30"), // Completed %
-
-                new BigDecimal("250") // AC
+                new BigDecimal("40"),   // Planned %
+                new BigDecimal("30"),   // Completed %
+                new BigDecimal("250")   // AC
 
         );
 
         // Act
 
-        EvmResult result = service.calculate(input);
+        MetricsResponse result = service.calculate(input);
 
         // Assert
 
-        assertEquals(new BigDecimal("400.00"), result.pv());
+        assertEquals(new BigDecimal("400.00"), result.getPv());
 
-        assertEquals(new BigDecimal("300.00"), result.ev());
+        assertEquals(new BigDecimal("300.00"), result.getEv());
 
-        assertEquals(new BigDecimal("50.00"), result.cv());
+        assertEquals(new BigDecimal("50.00"), result.getCv());
 
-        assertEquals(new BigDecimal("-100.00"), result.sv());
+        assertEquals(new BigDecimal("-100.00"), result.getSv());
 
-        assertEquals(new BigDecimal("1.20"), result.cpi());
+        assertEquals(new BigDecimal("1.20"), result.getCpi());
 
-        assertEquals(new BigDecimal("0.75"), result.spi());
+        assertEquals(new BigDecimal("0.75"), result.getSpi());
 
-        assertEquals(new BigDecimal("833.33"), result.eac());
+        assertEquals(new BigDecimal("833.33"), result.getEac());
 
-        assertEquals(new BigDecimal("166.67"), result.vac());
+        assertEquals(new BigDecimal("166.67"), result.getVac());
 
     }
 

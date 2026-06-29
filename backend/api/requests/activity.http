@@ -3,7 +3,7 @@
 ##################################################
 @host=http://localhost:8081
 @projectId=9f0268b5-8efd-42ff-8974-3826ed8898ae
-@activityId=f937b011-1a61-47ab-9bf2-faf94f7bd02a
+@activityId=ba1dac5c-a769-4c6d-bcdb-6158b65da1af
 
 ##################################################
 ### CREATE
@@ -78,3 +78,10 @@ DELETE {{host}}/api/activities/{{activityId}}
 ##################################################
 
 GET {{host}}/api/activities/00000000-0000-0000-0000-000000000000
+
+##################################################
+### ACTIVITY METRICS
+##################################################
+
+GET {{host}}/api/activities/{{activityId}}/metrics
+Accept: application/json

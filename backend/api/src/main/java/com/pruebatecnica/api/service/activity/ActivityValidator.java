@@ -19,7 +19,7 @@ public class ActivityValidator {
     private final ActivityRepository activityRepository;
     private final ProjectRepository projectRepository;
 
-    public Activity validateExists(UUID id) {
+    public Activity validateActivity(UUID id) {
 
         return activityRepository.findById(id)
                 .orElseThrow(() ->

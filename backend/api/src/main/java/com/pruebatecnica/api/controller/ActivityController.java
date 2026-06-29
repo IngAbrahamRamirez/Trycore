@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import com.pruebatecnica.api.dto.activity.ActivityRequest;
 import com.pruebatecnica.api.dto.activity.ActivityResponse;
+import com.pruebatecnica.api.dto.common.MetricsResponse;
+import com.pruebatecnica.api.service.activity.ActivityMetricsService;
 import com.pruebatecnica.api.service.activity.ActivityService;
 
 import jakarta.validation.Valid;
@@ -19,6 +21,8 @@ import lombok.RequiredArgsConstructor;
 public class ActivityController {
 
     private final ActivityService activityService;
+
+    private final ActivityMetricsService activityMetricsService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -46,6 +50,13 @@ public class ActivityController {
             @PathVariable UUID projectId) {
 
         return activityService.findByProject(projectId);
+    }
+
+    @GetMapping("/{id}/metrics")
+    public MetricsResponse getMetrics(
+            @PathVariable UUID id) {
+
+        return activityMetricsService.calculate(id);
     }
 
     @PutMapping("/{id}")

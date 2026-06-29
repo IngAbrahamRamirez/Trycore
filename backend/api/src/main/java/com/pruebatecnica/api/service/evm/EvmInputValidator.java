@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 
 import org.springframework.stereotype.Component;
 
-import com.pruebatecnica.api.domain.evm.EvmInput;
 import com.pruebatecnica.api.exception.InvalidEvmInputException;
 
 @Component

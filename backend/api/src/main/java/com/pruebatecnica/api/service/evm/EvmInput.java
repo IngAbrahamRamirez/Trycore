@@ -1,4 +1,4 @@
-package com.pruebatecnica.api.domain.evm;
+package com.pruebatecnica.api.service.evm;
 
 import java.math.BigDecimal;
 

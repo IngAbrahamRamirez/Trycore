@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.pruebatecnica.api.core.enums.CostStatus;
 import com.pruebatecnica.api.core.enums.ScheduleStatus;
-import com.pruebatecnica.api.domain.evm.EvmInput;
-import com.pruebatecnica.api.domain.evm.EvmResult;
+import com.pruebatecnica.api.dto.common.MetricsResponse;
 
 @Service
 public class EvmCalculationService {
@@ -19,7 +18,7 @@ public class EvmCalculationService {
         this.validator = validator;
     }
 
-    public EvmResult calculate(EvmInput input) {
+    public MetricsResponse calculate(EvmInput input) {
 
         validator.validate(input);
 
@@ -37,30 +36,42 @@ public class EvmCalculationService {
         CostStatus costStatus = getCostStatus(cpi);
         ScheduleStatus scheduleStatus = getScheduleStatus(spi);
 
-        return new EvmResult(pv, ev, cv, sv, cpi, spi, eac, vac, costStatus, scheduleStatus,
-                getCostInterpretation(costStatus), getScheduleInterpretation(scheduleStatus));
+        return MetricsResponse.builder()
+        .pv(pv)
+        .ev(ev)
+        .cv(cv)
+        .sv(sv)
+        .cpi(cpi)
+        .spi(spi)
+        .eac(eac)
+        .vac(vac)
+        .costStatus(costStatus)
+        .scheduleStatus(scheduleStatus)
+        .costInterpretation(getCostInterpretation(costStatus))
+        .scheduleInterpretation(getScheduleInterpretation(scheduleStatus))
+        .build();
     }
-
+    
     private static final int SCALE = 2;
-
+    private static final RoundingMode ROUNDING = RoundingMode.HALF_UP;
     // Repetitive code for division and percentage calculations, which are used in
     // multiple EVM calculations
 
     private BigDecimal divide(BigDecimal dividend, BigDecimal divisor) {
 
-        if (divisor.compareTo(BigDecimal.ZERO) == 0) {
-            return BigDecimal.ZERO;
-        }
-
-        return dividend.divide(divisor, SCALE, RoundingMode.HALF_UP);
+    if (divisor == null || divisor.compareTo(BigDecimal.ZERO) == 0) {
+        return BigDecimal.ZERO;
     }
+
+    return dividend.divide(divisor, SCALE, ROUNDING);
+}
 
     private BigDecimal percentage(BigDecimal value) {
 
         return value.divide(
                 BigDecimal.valueOf(100),
                 SCALE,
-                RoundingMode.HALF_UP);
+                ROUNDING);
     }
 
     // EVM calculations
@@ -72,7 +83,7 @@ public class EvmCalculationService {
             BigDecimal plannedPercentage) {
 
         return bac.multiply(percentage(plannedPercentage))
-                .setScale(SCALE, RoundingMode.HALF_UP);
+                .setScale(SCALE, ROUNDING);
     }
 
     // Earned Value (EV) = BAC * Completed Percentage
@@ -82,7 +93,7 @@ public class EvmCalculationService {
             BigDecimal completedPercentage) {
 
         return bac.multiply(percentage(completedPercentage))
-                .setScale(SCALE, RoundingMode.HALF_UP);
+                .setScale(SCALE, ROUNDING);
     }
 
     // Cost Variance (CV) = EV - AC
