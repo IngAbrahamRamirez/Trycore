@@ -13,14 +13,25 @@ import com.pruebatecnica.api.service.project.ProjectService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/api/projects")
 @RequiredArgsConstructor
+@Tag(name = "Projects", description = "Operations related to project management")
 public class ProjectController {
 
     private final ProjectService projectService;
 
     @PostMapping
+    @Operation(summary = "Create project", description = "Creates a new project.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "201", description = "Project created successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid request")
+    })
     @ResponseStatus(HttpStatus.CREATED)
     public ProjectResponse create(
             @Valid @RequestBody ProjectRequest request) {
@@ -29,12 +40,21 @@ public class ProjectController {
     }
 
     @GetMapping
+    @Operation(summary = "Find all projects", description = "Retrieves a list of all projects.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Projects retrieved successfully")
+    })
     public List<ProjectResponse> findAll() {
 
         return projectService.findAll();
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Find project by ID", description = "Retrieves a project by their unique identifier.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Project retrieved successfully"),
+            @ApiResponse(responseCode = "404", description = "Project not found")
+    })
     public ProjectResponse findById(
             @PathVariable UUID id) {
 
@@ -42,6 +62,12 @@ public class ProjectController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Update project", description = "Updates an existing project.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Project updated successfully"),
+            @ApiResponse(responseCode = "404", description = "Project not found"),
+            @ApiResponse(responseCode = "400", description = "Invalid request")
+    })
     public ProjectResponse update(
             @PathVariable UUID id,
             @Valid @RequestBody ProjectRequest request) {
@@ -50,6 +76,11 @@ public class ProjectController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete project", description = "Deletes a project by their unique identifier.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "204", description = "Project deleted successfully"),
+            @ApiResponse(responseCode = "404", description = "Project not found")
+    })
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(
             @PathVariable UUID id) {
