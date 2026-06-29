@@ -17,6 +17,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Parameter;
+
 
 @RestController
 @RequestMapping("/api/projects")
@@ -30,11 +32,13 @@ public class ProjectController {
     @Operation(summary = "Create project", description = "Creates a new project.")
     @ApiResponses({
             @ApiResponse(responseCode = "201", description = "Project created successfully"),
-            @ApiResponse(responseCode = "400", description = "Invalid request")
+            @ApiResponse(responseCode = "400", description = "Invalid request"),
+            @ApiResponse(responseCode = "500", description = "Internal server error"),
+            @ApiResponse(responseCode = "404", description = "Error creating project")
     })
     @ResponseStatus(HttpStatus.CREATED)
     public ProjectResponse create(
-            @Valid @RequestBody ProjectRequest request) {
+            @Valid @RequestBody @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Project information", required = true) ProjectRequest request) {
 
         return projectService.create(request);
     }
@@ -53,8 +57,11 @@ public class ProjectController {
     @Operation(summary = "Find project by ID", description = "Retrieves a project by their unique identifier.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Project retrieved successfully"),
-            @ApiResponse(responseCode = "404", description = "Project not found")
+            @ApiResponse(responseCode = "404", description = "Project not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error"),
+            @ApiResponse(responseCode = "400", description = "Invalid request")
     })
+    @Parameter(description = "Project identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a")
     public ProjectResponse findById(
             @PathVariable UUID id) {
 
@@ -66,11 +73,13 @@ public class ProjectController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Project updated successfully"),
             @ApiResponse(responseCode = "404", description = "Project not found"),
-            @ApiResponse(responseCode = "400", description = "Invalid request")
-    })
+            @ApiResponse(responseCode = "400", description = "Invalid request"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+          })
+    @Parameter(description = "Project identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a")
     public ProjectResponse update(
             @PathVariable UUID id,
-            @Valid @RequestBody ProjectRequest request) {
+            @Valid @RequestBody @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Project information to update", required = true) ProjectRequest request) {
 
         return projectService.update(id, request);
     }
@@ -79,8 +88,10 @@ public class ProjectController {
     @Operation(summary = "Delete project", description = "Deletes a project by their unique identifier.")
     @ApiResponses({
             @ApiResponse(responseCode = "204", description = "Project deleted successfully"),
-            @ApiResponse(responseCode = "404", description = "Project not found")
+            @ApiResponse(responseCode = "404", description = "Project not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
     })
+    @Parameter(description = "Project identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(
             @PathVariable UUID id) {

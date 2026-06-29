@@ -20,6 +20,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+import io.swagger.v3.oas.annotations.Parameter;
+
 @RestController
 @RequestMapping("/api/activities")
 @RequiredArgsConstructor
@@ -38,7 +40,7 @@ public class ActivityController {
     })
     @ResponseStatus(HttpStatus.CREATED)
     public ActivityResponse create(
-            @Valid @RequestBody ActivityRequest request) {
+            @Valid @RequestBody @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Activity information", required = true) ActivityRequest request) {
 
         return activityService.create(request);
     }
@@ -59,6 +61,7 @@ public class ActivityController {
             @ApiResponse(responseCode = "200", description = "Activity retrieved successfully"),
             @ApiResponse(responseCode = "404", description = "Activity not found")
     })
+    @Parameter(description = "Activity identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a")
     public ActivityResponse findById(
             @PathVariable UUID id) {
 
@@ -69,9 +72,12 @@ public class ActivityController {
     @Operation(summary = "Find activities by project", description = "Retrieves a list of activities associated with a specific project.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Activities retrieved successfully"),
-            @ApiResponse(responseCode = "404", description = "Project not found")
+            @ApiResponse(responseCode = "404", description = "Project not found"),
+            @ApiResponse(responseCode = "400", description = "Invalid request"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
     })
 
+    @Parameter(description = "Project identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a")
     public List<ActivityResponse> findByProject(
             @PathVariable UUID projectId) {
 
@@ -84,6 +90,7 @@ public class ActivityController {
             @ApiResponse(responseCode = "200", description = "Metrics retrieved successfully"),
             @ApiResponse(responseCode = "404", description = "Activity not found")
     })
+    @Parameter(description = "Activity identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a")
     public MetricsResponse getMetrics(
             @PathVariable UUID id) {
 
@@ -97,9 +104,10 @@ public class ActivityController {
             @ApiResponse(responseCode = "404", description = "Activity not found"),
             @ApiResponse(responseCode = "400", description = "Invalid request")
     })
+    @Parameter(description = "Activity identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a")
     public ActivityResponse update(
             @PathVariable UUID id,
-            @Valid @RequestBody ActivityRequest request) {
+            @Valid @RequestBody @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Activity information to update", required = true) ActivityRequest request) {
 
         return activityService.update(id, request);
     }
@@ -110,6 +118,7 @@ public class ActivityController {
             @ApiResponse(responseCode = "204", description = "Activity deleted successfully"),
             @ApiResponse(responseCode = "404", description = "Activity not found")
     })
+    @Parameter(description = "Activity identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(
             @PathVariable UUID id) {

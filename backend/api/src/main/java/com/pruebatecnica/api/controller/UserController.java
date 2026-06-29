@@ -17,6 +17,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @RestController
 @RequestMapping("/api/users")
@@ -39,7 +40,15 @@ public class UserController {
     })
     @ResponseStatus(HttpStatus.CREATED)
     public UserResponse create(
-            @Valid @RequestBody UserRequest request) {
+            @Valid @RequestBody
+
+            @io.swagger.v3.oas.annotations.parameters.RequestBody(
+
+                    description = "User information",
+
+                    required = true
+
+            ) UserRequest request) {
 
         return userService.create(request);
     }
@@ -61,7 +70,7 @@ public class UserController {
     })
     @GetMapping("/{id}")
     public UserResponse findById(
-            @PathVariable UUID id) {
+            @Parameter(description = "User identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a") @PathVariable UUID id) {
 
         return userService.findById(id);
     }
@@ -75,8 +84,16 @@ public class UserController {
     })
 
     public UserResponse update(
-            @PathVariable UUID id,
-            @Valid @RequestBody UserRequest request) {
+            @Parameter(description = "User identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a") @PathVariable UUID id,
+            @Valid @RequestBody
+
+            @io.swagger.v3.oas.annotations.parameters.RequestBody(
+
+                    description = "User information to update",
+
+                    required = true
+
+            ) UserRequest request) {
 
         return userService.update(id, request);
     }
@@ -89,7 +106,7 @@ public class UserController {
     })
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(
-            @PathVariable UUID id) {
+            @Parameter(description = "User identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a") @PathVariable UUID id) {
 
         userService.delete(id);
     }

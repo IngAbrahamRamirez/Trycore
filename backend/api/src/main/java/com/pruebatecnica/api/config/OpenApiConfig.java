@@ -20,13 +20,25 @@ public class OpenApiConfig {
 
                         new Info()
 
-                                .title("Project Management API")
+                                .title("Project Management REST API")
 
                                 .description("""
-                                        REST API for managing users, projects,
-                                        activities and Earned Value Management (EVM)
-                                        metrics.
-                                        """)
+
+                                        Project Management API
+
+                                        Version 1.0
+
+                                        Spring Boot 3
+
+                                        Java 21
+
+                                        PostgreSQL
+
+                                        JWT Authentication
+
+                                        Earned Value Management (EVM)
+
+                                                                                """)
 
                                 .version("1.0.0")
 
@@ -35,7 +47,8 @@ public class OpenApiConfig {
                                         new Contact()
 
                                                 .name("Abraham Ramirez")
-                                                .email("abraham@example.com"))
+
+                                                .email("abraham@email.com"))
 
                                 .license(
 
