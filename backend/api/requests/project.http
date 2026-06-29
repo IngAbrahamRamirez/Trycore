@@ -60,3 +60,5 @@ DELETE {{host}}/api/projects/{{createProject.response.body.id}}
 ### Project Not Found
 
 GET {{host}}/api/projects/00000000-0000-0000-0000-000000000000
+
+GET {{host}}/api/users

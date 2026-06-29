@@ -1,4 +1,4 @@
-package com.pruebatecnica.api.dto.response;
+package com.pruebatecnica.api.dto.common;
 
 import java.time.LocalDateTime;
 

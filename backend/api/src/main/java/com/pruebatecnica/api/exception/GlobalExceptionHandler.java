@@ -7,38 +7,38 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.pruebatecnica.api.dto.response.ErrorResponse;
+import com.pruebatecnica.api.dto.common.ErrorResponse;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleResourceNotFound(
-            ResourceNotFoundException exception) {
+        @ExceptionHandler(BusinessException.class)
+        public ResponseEntity<ErrorResponse> handleBusinessException(
+                        BusinessException exception) {
 
-        ErrorResponse response = ErrorResponse.builder()
-                .timestamp(LocalDateTime.now())
-                .status(HttpStatus.NOT_FOUND.value())
-                .error(exception.getMessage())
-                .build();
+                ErrorResponse response = ErrorResponse.builder()
+                                .timestamp(LocalDateTime.now())
+                                .status(HttpStatus.BAD_REQUEST.value())
+                                .error(exception.getMessage())
+                                .build();
 
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(response);
-    }
+                return ResponseEntity
+                                .status(HttpStatus.BAD_REQUEST)
+                                .body(response);
+        }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleException(
-            Exception exception) {
+        @ExceptionHandler(Exception.class)
+        public ResponseEntity<ErrorResponse> handleException(
+                        Exception exception) {
 
-        ErrorResponse response = ErrorResponse.builder()
-                .timestamp(LocalDateTime.now())
-                .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                .error(exception.getMessage())
-                .build();
+                ErrorResponse response = ErrorResponse.builder()
+                                .timestamp(LocalDateTime.now())
+                                .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                                .error(exception.getMessage())
+                                .build();
 
-        return ResponseEntity
-                .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(response);
-    }
+                return ResponseEntity
+                                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                .body(response);
+        }
 }

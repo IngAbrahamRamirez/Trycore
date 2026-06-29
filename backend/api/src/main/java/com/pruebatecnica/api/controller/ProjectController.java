@@ -6,8 +6,8 @@ import java.util.UUID;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import com.pruebatecnica.api.dto.request.ProjectRequest;
-import com.pruebatecnica.api.dto.response.ProjectResponse;
+import com.pruebatecnica.api.dto.project.ProjectRequest;
+import com.pruebatecnica.api.dto.project.ProjectResponse;
 import com.pruebatecnica.api.service.project.ProjectService;
 
 import jakarta.validation.Valid;

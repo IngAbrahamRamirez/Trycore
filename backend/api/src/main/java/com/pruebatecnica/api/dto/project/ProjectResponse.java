@@ -1,4 +1,4 @@
-package com.pruebatecnica.api.dto.response;
+package com.pruebatecnica.api.dto.project;
 
 import java.time.LocalDate;
 import java.util.UUID;

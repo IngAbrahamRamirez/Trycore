@@ -6,8 +6,8 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import com.pruebatecnica.api.domain.entity.Project;
-import com.pruebatecnica.api.dto.request.ProjectRequest;
-import com.pruebatecnica.api.dto.response.ProjectResponse;
+import com.pruebatecnica.api.dto.project.ProjectRequest;
+import com.pruebatecnica.api.dto.project.ProjectResponse;
 import com.pruebatecnica.api.exception.ResourceNotFoundException;
 import com.pruebatecnica.api.repository.ProjectRepository;
 

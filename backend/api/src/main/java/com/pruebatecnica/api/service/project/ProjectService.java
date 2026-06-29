@@ -3,8 +3,8 @@ package com.pruebatecnica.api.service.project;
 import java.util.List;
 import java.util.UUID;
 
-import com.pruebatecnica.api.dto.request.ProjectRequest;
-import com.pruebatecnica.api.dto.response.ProjectResponse;
+import com.pruebatecnica.api.dto.project.ProjectRequest;
+import com.pruebatecnica.api.dto.project.ProjectResponse;
 
 public interface ProjectService {
 

@@ -1,4 +1,4 @@
-package com.pruebatecnica.api.dto.request;
+package com.pruebatecnica.api.dto.project;
 
 import java.time.LocalDate;
 

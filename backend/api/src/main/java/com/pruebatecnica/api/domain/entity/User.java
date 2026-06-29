@@ -39,7 +39,7 @@ public class User extends AuditableEntity {
 
     @Builder.Default
     @Column(nullable = false)
-    private Boolean enabled = true;
+    private Boolean enabled = Boolean.TRUE;
 
     @Builder.Default
     @JsonManagedReference
