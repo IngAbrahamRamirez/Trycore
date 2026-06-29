@@ -5,11 +5,11 @@ import java.util.UUID;
 
 import com.pruebatecnica.api.core.enums.ProjectStatus;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class ProjectResponse {
 
     private UUID id;
@@ -23,4 +23,5 @@ public class ProjectResponse {
     private LocalDate endDate;
 
     private ProjectStatus status;
+
 }

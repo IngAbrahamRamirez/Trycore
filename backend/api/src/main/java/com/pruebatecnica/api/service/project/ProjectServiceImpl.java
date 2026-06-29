@@ -4,94 +4,76 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.pruebatecnica.api.domain.entity.Project;
+import com.pruebatecnica.api.domain.entity.User;
 import com.pruebatecnica.api.dto.project.ProjectRequest;
 import com.pruebatecnica.api.dto.project.ProjectResponse;
-import com.pruebatecnica.api.exception.ResourceNotFoundException;
+import com.pruebatecnica.api.mapper.ProjectMapper;
 import com.pruebatecnica.api.repository.ProjectRepository;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ProjectServiceImpl implements ProjectService {
 
     private final ProjectRepository projectRepository;
+    private final ProjectMapper projectMapper;
+    private final ProjectValidator projectValidator;
 
-    @SuppressWarnings("null")
     @Override
     public ProjectResponse create(ProjectRequest request) {
 
-        Project project = Project.builder()
-                .name(request.getName())
-                .description(request.getDescription())
-                .startDate(request.getStartDate())
-                .endDate(request.getEndDate())
-                .status(request.getStatus())
-                .build();
+        User user = projectValidator.validateUser(request.getUserId());
+
+        Project project = projectMapper.toEntity(request);
+
+        project.setUser(user);
 
         project = projectRepository.save(project);
 
-        return mapToResponse(project);
+        return projectMapper.toResponse(project);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<ProjectResponse> findAll() {
 
-        return projectRepository.findAll()
-                .stream()
-                .map(this::mapToResponse)
-                .toList();
+        return projectMapper.toResponseList(projectRepository.findAll());
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ProjectResponse findById(UUID id) {
 
-        Project project = projectRepository.findById(id)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Project not found"));
-
-        return mapToResponse(project);
+        return projectMapper.toResponse(
+                projectValidator.validateProject(id));
     }
 
     @Override
     public ProjectResponse update(UUID id, ProjectRequest request) {
 
-        Project project = projectRepository.findById(id)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Project not found"));
+        Project project = projectValidator.validateProject(id);
 
-        project.setName(request.getName());
-        project.setDescription(request.getDescription());
-        project.setStartDate(request.getStartDate());
-        project.setEndDate(request.getEndDate());
-        project.setStatus(request.getStatus());
+        User user = projectValidator.validateUser(request.getUserId());
+
+        projectMapper.updateEntity(request, project);
+
+        project.setUser(user);
 
         project = projectRepository.save(project);
 
-        return mapToResponse(project);
+        return projectMapper.toResponse(project);
     }
 
     @Override
     public void delete(UUID id) {
 
-        Project project = projectRepository.findById(id)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Project not found"));
-
-        projectRepository.delete(project);
+        projectRepository.delete(
+                projectValidator.validateProject(id));
     }
 
-    private ProjectResponse mapToResponse(Project project) {
-
-        return ProjectResponse.builder()
-                .id(project.getId())
-                .name(project.getName())
-                .description(project.getDescription())
-                .startDate(project.getStartDate())
-                .endDate(project.getEndDate())
-                .status(project.getStatus())
-                .build();
-    }
 }
