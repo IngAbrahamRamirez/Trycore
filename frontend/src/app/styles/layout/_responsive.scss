@@ -1,0 +1,29 @@
+@use "../abstracts" as *;
+
+/*
+|--------------------------------------------------------------------------
+| Responsive Grid
+|--------------------------------------------------------------------------
+*/
+
+@include tablet-only {
+
+    .grid-four-columns {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+@include mobile {
+
+    .grid-two-columns,
+    .grid-three-columns,
+    .grid-four-columns {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}

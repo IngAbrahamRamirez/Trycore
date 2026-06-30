@@ -1,5 +1,49 @@
-<nav>
+<div class="sidebar">
 
-    Sidebar
+    <div class="brand">
 
-</nav>
+        <div class="brand__logo">
+            T
+        </div>
+
+        <div class="brand__text">
+
+            <h2>Trycore</h2>
+
+            <small>EVM Dashboard</small>
+
+        </div>
+
+    </div>
+
+    <nav class="navigation">
+
+        @for(item of navigation; track item.id){
+
+            <a
+
+                [routerLink]="item.route"
+
+                routerLinkActive="active"
+
+                class="navigation__item">
+
+                <span class="material-symbols-rounded">
+
+                    {{item.icon}}
+
+                </span>
+
+                <span>
+
+                    {{item.label}}
+
+                </span>
+
+            </a>
+
+        }
+
+    </nav>
+
+</div>
