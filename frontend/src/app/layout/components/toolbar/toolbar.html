@@ -1,5 +1,26 @@
-<nav>
+<header class="toolbar">
+  <div class="toolbar__left">
+    <button type="button" class="toolbar__menu" (click)="toggleSidebar()">
+      <span class="material-symbols-rounded"> menu </span>
+    </button>
 
-    Toolbar
+    <h1>
+      {{ pageTitle }}
+    </h1>
+  </div>
 
-</nav>
+  <div class="toolbar__right">
+    <button type="button" class="toolbar__menu" (click)="toggleSidebar()">
+      <span class="material-symbols-rounded"> menu </span>
+    </button>
+    <div class="toolbar__user">
+      <div class="toolbar__avatar">AR</div>
+
+      <div class="toolbar__profile">
+        <strong> Abraham </strong>
+
+        <small> Administrator </small>
+      </div>
+    </div>
+  </div>
+</header>

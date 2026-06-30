@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject
+} from '@angular/core';
+
+import { LayoutState } from '../../../core/state/layout.state';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,4 +13,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrl: './toolbar.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ToolbarComponent {}
+export class ToolbarComponent {
+
+  protected readonly layout = inject(LayoutState);
+
+  protected readonly pageTitle = 'Dashboard';
+
+  toggleSidebar(): void {
+
+    this.layout.toggleSidebar();
+
+  }
+
+}

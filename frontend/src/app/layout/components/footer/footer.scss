@@ -1,5 +1,45 @@
-:host{
+@use "../../../styles" as *;
 
-    display:block;
+/* Layout */
+
+.footer{
+
+    height:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding-inline:32px;
+
+    border-top:1px solid $border-color;
+
+    background:$surface;
+
+    color:$text-secondary;
+
+    font-size:.85rem;
+
+}
+
+/* Responsive */
+
+@include mobile{
+
+    .footer{
+
+        justify-content:center;
+
+        padding-inline:16px;
+
+    }
+
+    .footer span:last-child{
+
+        display:none;
+
+    }
 
 }

@@ -1,28 +1,32 @@
-<div class="shell">
+<div
 
-    <aside class="sidebar">
+    class="shell"
 
-        <app-sidebar />
+    [style.grid-template-columns]="layout.sidebarWidth()">
+
+    <aside>
+
+        <app-sidebar/>
 
     </aside>
 
-    <main class="content">
+    <main>
 
         <header>
 
-            <app-toolbar />
+            <app-toolbar/>
 
         </header>
 
         <section class="page">
 
-            <router-outlet />
+            <router-outlet/>
 
         </section>
 
         <footer>
 
-            <app-footer />
+            <app-footer/>
 
         </footer>
 

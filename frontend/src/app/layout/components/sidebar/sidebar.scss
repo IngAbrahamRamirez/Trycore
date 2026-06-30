@@ -121,3 +121,53 @@
     font-size:22px;
 
 }
+
+/* ---------------------------------- */
+/* States */
+/* ---------------------------------- */
+
+.sidebar{
+
+    transition:all .25s ease;
+
+}
+
+.brand{
+
+    transition:.25s;
+
+}
+
+.navigation__item{
+
+    transition:.2s;
+
+}
+
+.sidebar--collapsed{
+
+    .brand{
+
+        justify-content:center;
+
+    }
+
+    .brand__text{
+
+        display:none;
+
+    }
+
+    .navigation__item{
+
+        justify-content:center;
+
+    }
+
+    .navigation__item span:last-child{
+
+        display:none;
+
+    }
+
+}

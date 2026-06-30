@@ -1,7 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject
+} from '@angular/core';
+
+import {
+  RouterLink,
+  RouterLinkActive
+} from '@angular/router';
 
 import { NAVIGATION_ITEMS } from '../../../core/navigation/navigation.config';
+import { LayoutState } from '../../../core/state/layout.state';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,5 +26,7 @@ import { NAVIGATION_ITEMS } from '../../../core/navigation/navigation.config';
 export class SidebarComponent {
 
   protected readonly navigation = NAVIGATION_ITEMS;
+
+  protected readonly layout = inject(LayoutState);
 
 }
