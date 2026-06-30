@@ -1,0 +1,81 @@
+@use "../../styles/index" as *;
+
+.shell {
+
+    display: grid;
+
+    grid-template-columns: 280px 1fr;
+
+    min-height: 100vh;
+
+    background: $background;
+
+}
+
+.sidebar {
+
+    background: $primary;
+
+    color: white;
+
+    border-right: 1px solid rgba(255,255,255,.08);
+
+}
+
+.content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    background: $background;
+
+}
+
+header {
+
+    height:72px;
+
+    flex-shrink:0;
+
+}
+
+.page{
+
+    flex:1;
+
+    padding:32px;
+
+    overflow:auto;
+
+}
+
+footer{
+
+    height:48px;
+
+}
+
+@include mobile{
+
+    .shell{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .sidebar{
+
+        display:none;
+
+    }
+
+    .page{
+
+        padding:24px;
+
+    }
+
+}
