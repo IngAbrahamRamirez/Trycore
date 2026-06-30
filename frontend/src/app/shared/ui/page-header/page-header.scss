@@ -1,0 +1,121 @@
+@use "../../../styles" as *;
+
+/* ---------------------------------- */
+/* Layout */
+/* ---------------------------------- */
+
+.page-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:24px;
+
+    margin-bottom:32px;
+
+}
+
+.page-header__content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.page-header__content h1{
+
+    margin:0;
+
+    color:$text-primary;
+
+    font-size:2rem;
+
+    font-weight:700;
+
+}
+
+.page-header__content p{
+
+    margin:0;
+
+    color:$text-secondary;
+
+    font-size:1rem;
+
+}
+
+/* ---------------------------------- */
+/* Actions */
+/* ---------------------------------- */
+
+.page-header__actions{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+}
+
+.page-header__button{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:12px 18px;
+
+    border-radius:$radius-md;
+
+    background:$primary;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.2s;
+
+}
+
+.page-header__button:hover{
+
+    transform:translateY(-1px);
+
+    box-shadow:$shadow-sm;
+
+}
+
+.page-header__button:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+/* ---------------------------------- */
+/* Responsive */
+/* ---------------------------------- */
+
+@include mobile{
+
+    .page-header{
+
+        flex-direction:column;
+
+    }
+
+}

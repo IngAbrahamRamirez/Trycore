@@ -1,0 +1,66 @@
+<div class="stat-card">
+
+    <div class="stat-card__header">
+
+        <div>
+
+            <span class="stat-card__title">
+
+                {{ model().title }}
+
+            </span>
+
+        </div>
+
+        <div class="stat-card__icon">
+
+            <span class="material-symbols-rounded">
+
+                {{ model().icon }}
+
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card__value">
+
+        {{ model().value }}
+
+    </div>
+
+    @if(model().trend !== undefined){
+
+        <div
+            class="stat-card__trend"
+            [class.stat-card__trend--positive]="positiveTrend()"
+            [class.stat-card__trend--negative]="!positiveTrend()">
+
+            <span class="material-symbols-rounded">
+
+                {{ positiveTrend() ? 'trending_up' : 'trending_down' }}
+
+            </span>
+
+            <span>
+
+                {{ model().trend }}%
+
+            </span>
+
+            @if(model().trendLabel){
+
+                <small>
+
+                    {{ model().trendLabel }}
+
+                </small>
+
+            }
+
+        </div>
+
+    }
+
+</div>

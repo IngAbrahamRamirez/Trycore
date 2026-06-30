@@ -1,0 +1,59 @@
+<header class="page-header">
+
+    <div class="page-header__content">
+
+        <h1>
+
+            {{ model().title }}
+
+        </h1>
+
+        @if(model().subtitle){
+
+            <p>
+
+                {{ model().subtitle }}
+
+            </p>
+
+        }
+
+    </div>
+
+    @if(model().actions?.length){
+
+        <div class="page-header__actions">
+
+            @for(action of model().actions; track action.label){
+
+                <button
+                    type="button"
+                    class="page-header__button"
+                    (click)="action.action()"
+                    [disabled]="action.disabled">
+
+                    @if(action.icon){
+
+                        <span class="material-symbols-rounded">
+
+                            {{ action.icon }}
+
+                        </span>
+
+                    }
+
+                    <span>
+
+                        {{ action.label }}
+
+                    </span>
+
+                </button>
+
+            }
+
+        </div>
+
+    }
+
+</header>

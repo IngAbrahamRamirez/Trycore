@@ -1,0 +1,117 @@
+@use "../../../styles" as *;
+
+/* ---------------------------------- */
+/* Card */
+/* ---------------------------------- */
+
+.stat-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+    padding:24px;
+
+    background:$surface;
+
+    border-radius:$radius-lg;
+
+    box-shadow:$shadow-sm;
+
+}
+
+/* ---------------------------------- */
+/* Header */
+/* ---------------------------------- */
+
+.stat-card__header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.stat-card__title{
+
+    color:$text-secondary;
+
+    font-size:.9rem;
+
+    font-weight:500;
+
+}
+
+.stat-card__icon{
+
+    width:48px;
+
+    height:48px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:12px;
+
+    background:rgba($primary,.08);
+
+    color:$primary;
+
+}
+
+/* ---------------------------------- */
+/* Value */
+/* ---------------------------------- */
+
+.stat-card__value{
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:$text-primary;
+
+}
+
+/* ---------------------------------- */
+/* Trend */
+/* ---------------------------------- */
+
+.stat-card__trend{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+}
+
+.stat-card__trend small{
+
+    color:$text-secondary;
+
+    font-weight:400;
+
+}
+
+.stat-card__trend--positive{
+
+    color:$success;
+
+}
+
+.stat-card__trend--negative{
+
+    color:$error;
+
+}

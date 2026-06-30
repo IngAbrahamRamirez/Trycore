@@ -1,0 +1,33 @@
+<section class="section-card">
+
+    <header class="section-card__header">
+
+        <div>
+
+            <h2>
+
+                {{ title() }}
+
+            </h2>
+
+            @if(subtitle()){
+
+                <p>
+
+                    {{ subtitle() }}
+
+                </p>
+
+            }
+
+        </div>
+
+    </header>
+
+    <div class="section-card__content">
+
+        <ng-content />
+
+    </div>
+
+</section>
