@@ -1,0 +1,35 @@
+@use "./theme-colors" as color;
+
+/* Layout */
+
+$app-background: color.$background;
+
+$app-surface: color.$surface;
+
+$app-max-width: 1440px;
+
+$header-height: 72px;
+
+$sidebar-width: 280px;
+
+$content-padding: 2rem;
+
+/* Animation */
+
+$transition-fast: 150ms ease-in-out;
+
+$transition-normal: 250ms ease;
+
+$transition-slow: 350ms ease;
+
+/* Z Index */
+
+$z-header: 100;
+
+$z-sidebar: 200;
+
+$z-overlay: 500;
+
+$z-modal: 1000;
+
+$z-tooltip: 1500;

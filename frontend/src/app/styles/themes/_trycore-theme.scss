@@ -1,0 +1,31 @@
+@use "../abstracts" as *;
+
+:root{
+
+    --color-primary:#{$primary};
+
+    --color-primary-light:#{$primary-light};
+
+    --color-primary-dark:#{$primary-dark};
+
+    --color-secondary:#{$secondary};
+
+    --color-accent:#{$accent};
+
+    --color-background:#{$background};
+
+    --color-surface:#{$surface};
+
+    --color-text:#{$text-primary};
+
+    --color-text-secondary:#{$text-secondary};
+
+    --color-border:#{$border-color};
+
+    --color-success:#{$success};
+
+    --color-warning:#{$warning};
+
+    --color-error:#{$error};
+
+}

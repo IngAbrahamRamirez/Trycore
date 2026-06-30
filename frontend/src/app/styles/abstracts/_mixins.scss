@@ -1,0 +1,49 @@
+@use "./breakpoints" as bp;
+
+@mixin mobile {
+
+    @media (max-width: #{bp.$mobile}) {
+
+        @content;
+
+    }
+
+}
+
+@mixin tablet {
+
+    @media (min-width: #{bp.$tablet}) {
+
+        @content;
+
+    }
+
+}
+
+@mixin desktop {
+
+    @media (min-width: #{bp.$desktop}) {
+
+        @content;
+
+    }
+
+}
+
+@mixin flex-center {
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+@mixin card {
+
+    border-radius:12px;
+
+    background:white;
+
+}
