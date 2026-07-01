@@ -1,0 +1,8 @@
+@host=http://localhost:8081
+@projectId=
+
+##################################################
+### PROJECT METRICS
+##################################################
+
+GET {{host}}/api/projects/{{projectId}}/metrics

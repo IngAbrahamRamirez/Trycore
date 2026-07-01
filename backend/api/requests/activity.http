@@ -1,0 +1,87 @@
+##################################################
+### VARIABLES
+##################################################
+@host=http://localhost:8081
+@projectId=9f0268b5-8efd-42ff-8974-3826ed8898ae
+@activityId=ba1dac5c-a769-4c6d-bcdb-6158b65da1af
+
+##################################################
+### CREATE
+##################################################
+
+POST {{host}}/api/activities
+Content-Type: application/json
+
+{
+    "projectId":"{{projectId}}",
+    "name":"Diseño Base de Datos",
+    "budgetAtCompletion":15000,
+    "plannedPercentage":40,
+    "actualPercentage":35,
+    "actualCost":5200
+}
+
+###
+
+##################################################
+### FIND ALL
+##################################################
+
+GET {{host}}/api/activities
+
+###
+
+##################################################
+### FIND BY ID
+##################################################
+
+GET {{host}}/api/activities/{{activityId}}
+
+###
+
+##################################################
+### FIND BY PROJECT
+##################################################
+
+GET {{host}}/api/activities/project/{{projectId}}
+
+###
+
+##################################################
+### UPDATE
+##################################################
+
+PUT {{host}}/api/activities/{{activityId}}
+Content-Type: application/json
+
+{
+    "projectId":"{{projectId}}",
+    "name":"Diseño BD Final",
+    "budgetAtCompletion":18000,
+    "plannedPercentage":60,
+    "actualPercentage":50,
+    "actualCost":9000
+}
+
+###
+
+##################################################
+### DELETE
+##################################################
+
+DELETE {{host}}/api/activities/{{activityId}}
+
+###
+
+##################################################
+### NEGATIVE TESTS
+##################################################
+
+GET {{host}}/api/activities/00000000-0000-0000-0000-000000000000
+
+##################################################
+### ACTIVITY METRICS
+##################################################
+
+GET {{host}}/api/activities/{{activityId}}/metrics
+Accept: application/json

@@ -1,0 +1,78 @@
+##################################################
+### VARIABLES
+##################################################
+@host=http://localhost:8081
+@userId=c5450138-aae9-41be-8768-fe28f1043779
+
+##################################################
+### CREATE
+##################################################
+
+POST {{host}}/api/users
+Content-Type: application/json
+
+{
+    "firstName":"Abraham",
+    "lastName":"Ramirez",
+    "email":"abraham@test.com",
+    "password":"12345678"
+}
+###
+
+##################################################
+### FIND ALL
+##################################################
+
+GET {{host}}/api/users
+
+###
+
+##################################################
+### FIND BY ID
+##################################################
+
+GET {{host}}/api/users/{{userId}}
+
+###
+
+##################################################
+### UPDATE
+##################################################
+
+PUT {{host}}/api/users/{{userId}}
+Content-Type: application/json
+
+{
+    "firstName":"Abraham",
+    "lastName":"Ramirez Updated",
+    "email":"abraham@test.com",
+    "password":"123456"
+}
+
+###
+
+##################################################
+### DELETE
+##################################################
+
+DELETE {{host}}/api/users/{{userId}}
+
+###
+
+##################################################
+### NEGATIVE TESTS
+##################################################
+
+GET {{host}}/api/users/00000000-0000-0000-0000-000000000000
+
+###
+
+POST {{host}}/api/users
+Content-Type: application/json
+
+{
+    "firstName":"Duplicate",
+    "lastName":"User",
+    "email":"abraham@test.com",
+    "password":"123456"
+}
