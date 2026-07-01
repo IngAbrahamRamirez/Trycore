@@ -1,32 +1,40 @@
 @use "../../../styles" as *;
 
-/* ---------------------------------- */
-/* Card */
-/* ---------------------------------- */
+:host{
+
+    display:block;
+
+}
 
 .stat-card{
+
+    @include card;
 
     display:flex;
 
     flex-direction:column;
 
-    gap:20px;
-
-    padding:24px;
-
-    background:$surface;
-
-    border-radius:$radius-lg;
-
-    box-shadow:$shadow-sm;
+    justify-content:space-between;
 
     min-height:140px;
 
+    padding:24px;
+
+    transition:
+        transform .18s ease,
+        box-shadow .18s ease;
+
+    cursor:default;
+
 }
 
-/* ---------------------------------- */
-/* Header */
-/* ---------------------------------- */
+.stat-card:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:$shadow-lg;
+
+}
 
 .stat-card__header{
 
@@ -36,6 +44,8 @@
 
     align-items:center;
 
+    margin-bottom:20px;
+
 }
 
 .stat-card__title{
@@ -44,150 +54,40 @@
 
     font-size:.9rem;
 
-    font-weight:500;
+    font-weight:600;
+
+    letter-spacing:.02em;
 
 }
 
 .stat-card__icon{
 
-    width:48px;
-
-    height:48px;
-
-    display:grid;
-
-    place-items:center;
-
-    border-radius:12px;
-
-    background:rgba($primary,.08);
+    font-size:28px;
 
     color:$primary;
 
 }
 
-/* ---------------------------------- */
-/* Value */
-/* ---------------------------------- */
-
 .stat-card__value{
 
-    font-size:2rem;
+    font-size:2.4rem;
 
     font-weight:700;
 
     color:$text-primary;
 
-}
-
-/* ---------------------------------- */
-/* Trend */
-/* ---------------------------------- */
-
-.stat-card__trend{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:6px;
-
-    font-size:.9rem;
-
-    font-weight:600;
-
-}
-
-.stat-card__trend small{
-
-    color:$text-secondary;
-
-    font-weight:400;
-
-}
-
-.stat-card__trend--positive{
-
-    color:$success;
-
-}
-
-.stat-card__trend--negative{
-
-    color:$error;
-
-}
-
-.stat-card{
-
-    transition:.25s;
-
-}
-
-.stat-card:hover{
-
-    transform:translateY(-3px);
-
-    box-shadow:$shadow-md;
-
-}
-
-.stat-card__body{
-
-    display:flex;
-
-    align-items:flex-end;
-
-    gap:12px;
-
-}
-
-.stat-card__icon{
-
-    width:56px;
-
-    height:56px;
-
-    display:grid;
-
-    place-items:center;
-
-    border-radius:$radius-md;
-
-    background:rgba($primary,.08);
-
-}
-
-.stat-card__icon .material-symbols-rounded{
-
-    font-size:28px;
-
-}
-
-.stat-card__value{
-
-    font-size:2.2rem;
-
-    font-weight:700;
-
     line-height:1;
 
 }
 
-.stat-card__footer{
+.stat-card__description{
 
-    display:flex;
+    margin-top:18px;
 
-    align-items:center;
+    color:$success;
 
-    gap:8px;
+    font-size:.85rem;
 
-}
-
-.stat-card__footer small{
-
-    margin-left:4px;
-
-    color:$text-secondary;
+    font-weight:500;
 
 }

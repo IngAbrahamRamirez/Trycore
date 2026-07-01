@@ -1,59 +1,59 @@
-<header class="page-header">
+<div class="page-header">
 
     <div class="page-header__content">
 
-        <h1>
+        <div class="page-header__titles">
 
-            {{ model().title }}
+            <h1>
 
-        </h1>
+                {{ model().title }}
 
-        @if(model().subtitle){
+            </h1>
 
-            <p>
+            @if (model().subtitle) {
 
-                {{ model().subtitle }}
+                <p>
 
-            </p>
+                    {{ model().subtitle }}
 
-        }
-
-    </div>
-
-    @if(model().actions?.length){
-
-        <div class="page-header__actions">
-
-            @for(action of model().actions; track action.label){
-
-                <button
-                    type="button"
-                    class="page-header__button"
-                    (click)="action.action()"
-                    [disabled]="action.disabled">
-
-                    @if(action.icon){
-
-                        <span class="material-symbols-rounded">
-
-                            {{ action.icon }}
-
-                        </span>
-
-                    }
-
-                    <span>
-
-                        {{ action.label }}
-
-                    </span>
-
-                </button>
+                </p>
 
             }
 
         </div>
 
-    }
+        @if (model().actions?.length) {
 
-</header>
+            <div class="page-header__actions">
+
+                @for (action of model().actions!; track action.label) {
+
+                    <button
+                        type="button"
+                        class="page-header__action"
+                        [disabled]="action.disabled"
+                        (click)="action.action()">
+
+                        @if (action.icon) {
+
+                            <span class="material-symbols-rounded">
+
+                                {{ action.icon }}
+
+                            </span>
+
+                        }
+
+                        {{ action.label }}
+
+                    </button>
+
+                }
+
+            </div>
+
+        }
+
+    </div>
+
+</div>

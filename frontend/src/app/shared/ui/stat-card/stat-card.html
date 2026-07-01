@@ -2,69 +2,34 @@
 
     <div class="stat-card__header">
 
-        <div>
+        <span class="stat-card__title">
 
-            <span class="stat-card__title">
+            {{ model().title }}
 
-                {{ model().title }}
+        </span>
 
-            </span>
+        @if (model().icon) {
 
-        </div>
-
-        <div class="stat-card__icon">
-
-            <span class="material-symbols-rounded">
+            <span class="material-symbols-rounded stat-card__icon">
 
                 {{ model().icon }}
 
             </span>
 
-        </div>
+        }
 
     </div>
 
-    <div class="stat-card__body">
+    <div class="stat-card__value">
 
-        <span class="stat-card__value">
-
-            {{ model().value }}
-
-        </span>
+        {{ model().value }}
 
     </div>
 
-    @if(model().trend !== undefined){
+    <div class="stat-card__description">
 
-        <div
-            class="stat-card__footer"
-            [class.stat-card__footer--positive]="positiveTrend()"
-            [class.stat-card__footer--negative]="!positiveTrend()">
+    &nbsp;
 
-            <span class="material-symbols-rounded">
-
-                {{ positiveTrend() ? 'trending_up' : 'trending_down' }}
-
-            </span>
-
-            <strong>
-
-                {{ model().trend }}%
-
-            </strong>
-
-            @if(model().trendLabel){
-
-                <small>
-
-                    {{ model().trendLabel }}
-
-                </small>
-
-            }
-
-        </div>
-
-    }
+</div>
 
 </div>
