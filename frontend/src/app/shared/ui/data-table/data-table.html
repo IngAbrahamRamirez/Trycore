@@ -28,7 +28,39 @@
 
                     <td>
 
-                        {{ row[column.field] }}
+                        @switch(column.type){
+
+                            @case('status'){
+
+                                <app-status-chip
+                                    [model]="getStatus(row, column.field)">
+                                </app-status-chip>
+
+                            }
+
+                            @case('progress'){
+
+                                <app-progress-bar
+                                    [model]="getProgress(row, column.field)">
+                                </app-progress-bar>
+
+                            }
+
+                            @case('avatar'){
+
+                                <app-avatar
+                                    [model]="getAvatar(row, column.field)">
+                                </app-avatar>
+
+                            }
+
+                            @default{
+
+                                {{ row[column.field] }}
+
+                            }
+
+                        }
 
                     </td>
 

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { MetricsPage } from './pages/metrics/metrics';
+import { MetricsPage } from './metrics/metrics';
 
 export const METRICS_ROUTES:Routes=[
 

@@ -38,7 +38,6 @@ export class DashboardComponent {
         action: () => console.log('Create Project'),
       },
     ],
-
   };
 
   protected readonly metrics: StatCardModel[] = [
@@ -83,13 +82,21 @@ export class DashboardComponent {
       },
 
       {
-        field: 'manager',
-        header: 'Manager',
+        field: 'progress',
+        header: 'Progress',
+        type: 'progress',
       },
 
       {
         field: 'status',
         header: 'Status',
+        type: 'status',
+      },
+
+      {
+        field: 'manager',
+        header: 'Manager',
+        type: 'avatar',
       },
     ],
 
@@ -97,56 +104,82 @@ export class DashboardComponent {
       {
         name: 'ERP Migration',
 
-        manager: 'John Doe',
+        progress: {
+          value: 82,
+        },
 
-        status: 'On Track',
+        status: {
+          label: 'On Track',
+
+          color: 'success',
+        },
+
+        manager: {
+          name: 'John Doe',
+        },
       },
 
       {
         name: 'CRM Upgrade',
 
-        manager: 'Jane Smith',
+        progress: {
+          value: 61,
+        },
 
-        status: 'At Risk',
+        status: {
+          label: 'At Risk',
+
+          color: 'warning',
+        },
+
+        manager: {
+          name: 'Jane Smith',
+        },
       },
 
       {
         name: 'Warehouse App',
 
-        manager: 'Robert Brown',
+        progress: {
+          value: 100,
+        },
 
-        status: 'Completed',
+        status: {
+          label: 'Completed',
+
+          color: 'success',
+        },
+
+        manager: {
+          name: 'Robert Brown',
+        },
       },
     ],
-
   };
 
   protected readonly quickActions = [
+    {
+      icon: 'add_circle',
+      title: 'New Project',
+      description: 'Create a new project',
+    },
 
-  {
-    icon: 'add_circle',
-    title: 'New Project',
-    description: 'Create a new project'
-  },
+    {
+      icon: 'task_alt',
+      title: 'Register Activity',
+      description: 'Add project progress',
+    },
 
-  {
-    icon: 'task_alt',
-    title: 'Register Activity',
-    description: 'Add project progress'
-  },
+    {
+      icon: 'analytics',
+      title: 'View Metrics',
+      description: 'Review project KPIs',
+    },
 
-  {
-    icon: 'analytics',
-    title: 'View Metrics',
-    description: 'Review project KPIs'
-  },
-
-  {
-    icon: 'group',
-    title: 'Manage Users',
-    description: 'Administration'
-  }
-
-];
-
+    {
+      icon: 'group',
+      title: 'Manage Users',
+      description: 'Administration',
+    },
+  ];
 }

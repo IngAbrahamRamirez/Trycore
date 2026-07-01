@@ -1,31 +1,22 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    computed,
-    input
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 import { StatCardModel } from '../../models/stat-card.model';
-
+import { MetricTrendComponent } from '../metric-trend/metric-trend';
 @Component({
+  selector: 'app-stat-card',
 
-    selector: 'app-stat-card',
+  standalone: true,
 
-    standalone: true,
+  imports: [MetricTrendComponent],
 
-    templateUrl: './stat-card.html',
+  templateUrl: './stat-card.html',
 
-    styleUrl: './stat-card.scss',
+  styleUrl: './stat-card.scss',
 
-    changeDetection: ChangeDetectionStrategy.OnPush
-
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StatCardComponent {
+  readonly model = input.required<StatCardModel>();
 
-    readonly model = input.required<StatCardModel>();
-
-    readonly positiveTrend = computed(() => (this.model().trend ?? 0) >= 0);
-
-    protected readonly Math = Math;
-
+  readonly positiveTrend = computed(() => (this.model().trend ?? 0) >= 0);
 }

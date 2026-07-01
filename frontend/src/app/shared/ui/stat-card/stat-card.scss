@@ -102,34 +102,3 @@
 
 }
 
-.stat-card__trend{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:4px;
-
-    font-size:.82rem;
-
-    font-weight:600;
-
-}
-
-.stat-card__trend.positive{
-
-    color:#16a34a;
-
-}
-
-.stat-card__trend.negative{
-
-    color:#dc2626;
-
-}
-
-.stat-card__trend .material-symbols-rounded{
-
-    font-size:18px;
-
-}

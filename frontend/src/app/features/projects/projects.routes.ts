@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 
-import { ProjectsPage } from './pages/projects/projects';
+import { ProjectsPage } from './projects/projects';
 
 export const PROJECTS_ROUTES:Routes=[
 
