@@ -26,4 +26,6 @@ export class StatCardComponent {
 
     readonly positiveTrend = computed(() => (this.model().trend ?? 0) >= 0);
 
+    protected readonly Math = Math;
+
 }

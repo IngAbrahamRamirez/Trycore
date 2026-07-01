@@ -1,0 +1,45 @@
+@use "../../../styles" as *;
+
+:host{
+
+    display:inline-flex;
+
+}
+
+.metric-trend{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:4px;
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+}
+
+.metric-trend .material-symbols-rounded{
+
+    font-size:18px;
+
+}
+
+.metric-trend--up{
+
+    color:#16A34A;
+
+}
+
+.metric-trend--down{
+
+    color:#DC2626;
+
+}
+
+.metric-trend--neutral{
+
+    color:$text-secondary;
+
+}

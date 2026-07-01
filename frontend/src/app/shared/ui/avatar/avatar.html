@@ -1,0 +1,23 @@
+<div
+
+    class="avatar"
+
+    [class.avatar--sm]="model().size === 'sm'"
+
+    [class.avatar--lg]="model().size === 'lg'">
+
+    @if(model().imageUrl){
+
+        <img
+
+            [src]="model().imageUrl"
+
+            [alt]="model().name">
+
+    } @else {
+
+        {{ initials() }}
+
+    }
+
+</div>

@@ -1,0 +1,25 @@
+<div class="progress">
+
+    <div class="progress__track">
+
+        <div
+
+            class="progress__fill"
+
+            [style.width]="width()">
+
+        </div>
+
+    </div>
+
+    @if(model().showLabel !== false){
+
+        <span>
+
+            {{ model().value }}%
+
+        </span>
+
+    }
+
+</div>

@@ -10,6 +10,8 @@ export interface StatCardModel {
 
     trendLabel?: string;
 
+    label?: string;
+
     color?: 'primary' | 'success' | 'warning' | 'error';
 
 }

@@ -2,34 +2,63 @@
 
     <div class="stat-card__header">
 
-        <span class="stat-card__title">
+        <div class="stat-card__icon">
 
-            {{ model().title }}
-
-        </span>
-
-        @if (model().icon) {
-
-            <span class="material-symbols-rounded stat-card__icon">
+            <span class="material-symbols-rounded">
 
                 {{ model().icon }}
 
             </span>
 
+        </div>
+
+        @if(model().trend){
+
+            <div
+                class="stat-card__trend"
+                [class.positive]="model().trend! > 0"
+                [class.negative]="model().trend! < 0">
+
+                @if(model().trend! > 0){
+
+                    <span class="material-symbols-rounded">
+
+                        trending_up
+
+                    </span>
+
+                } @else {
+
+                    <span class="material-symbols-rounded">
+
+                        trending_down
+
+                    </span>
+
+                }
+
+                {{ Math.abs(model().trend!) }}%
+
+            </div>
+
         }
 
     </div>
 
-    <div class="stat-card__value">
+    <div class="stat-card__body">
 
-        {{ model().value }}
+        <small>
+
+            {{ model().label }}
+
+        </small>
+
+        <h2>
+
+            {{ model().value }}
+
+        </h2>
 
     </div>
-
-    <div class="stat-card__description">
-
-    &nbsp;
-
-</div>
 
 </div>

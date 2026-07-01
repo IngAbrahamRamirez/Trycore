@@ -1,0 +1,35 @@
+<div
+
+    class="metric-trend"
+
+    [class.metric-trend--up]="direction() === 'up'"
+
+    [class.metric-trend--down]="direction() === 'down'"
+
+    [class.metric-trend--neutral]="direction() === 'neutral'">
+
+    @if(model().showIcon !== false){
+
+        <span class="material-symbols-rounded">
+
+            @switch(direction()){
+
+                @case('up'){ trending_up }
+
+                @case('down'){ trending_down }
+
+                @default{ trending_flat }
+
+            }
+
+        </span>
+
+    }
+
+    <span>
+
+        {{ absoluteValue() }}%
+
+    </span>
+
+</div>

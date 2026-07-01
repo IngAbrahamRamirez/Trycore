@@ -1,0 +1,107 @@
+@use "../../../styles" as *;
+
+:host{
+
+    display:inline-flex;
+
+}
+
+.status-chip{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:6px 12px;
+
+    border-radius:$radius-round;
+
+    font-size:.82rem;
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+}
+
+.status-chip__dot{
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+}
+
+.success{
+
+    background:#ECFDF3;
+
+    color:#027A48;
+
+}
+
+.success .status-chip__dot{
+
+    background:#12B76A;
+
+}
+
+.warning{
+
+    background:#FFFAEB;
+
+    color:#B54708;
+
+}
+
+.warning .status-chip__dot{
+
+    background:#F79009;
+
+}
+
+.danger{
+
+    background:#FEF3F2;
+
+    color:#B42318;
+
+}
+
+.danger .status-chip__dot{
+
+    background:#F04438;
+
+}
+
+.info{
+
+    background:#EFF8FF;
+
+    color:#175CD3;
+
+}
+
+.info .status-chip__dot{
+
+    background:#2E90FA;
+
+}
+
+.neutral{
+
+    background:$gray-100;
+
+    color:$text-secondary;
+
+}
+
+.neutral .status-chip__dot{
+
+    background:$gray-500;
+
+}

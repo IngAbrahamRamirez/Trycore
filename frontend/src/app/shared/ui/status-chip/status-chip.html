@@ -1,0 +1,19 @@
+<span
+
+    class="status-chip"
+
+    [class.success]="model().type === 'success'"
+
+    [class.warning]="model().type === 'warning'"
+
+    [class.danger]="model().type === 'danger'"
+
+    [class.info]="model().type === 'info'"
+
+    [class.neutral]="model().type === 'neutral'">
+
+    <span class="status-chip__dot"></span>
+
+    {{ model().label }}
+
+</span>
