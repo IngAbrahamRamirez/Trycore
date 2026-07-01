@@ -5,7 +5,7 @@
   grid-template-columns: 280px 1fr;
   min-height: 100vh;
   background: $background;
-  transition:grid-template-columns var(--layout-transition);
+  transition:grid-template-columns .25s ease;
 }
 
 main {
@@ -19,7 +19,6 @@ main {
 
 .sidebar {
   background: $primary;
-
   color: white;
   border-right: 1px solid rgba(255, 255, 255, 0.08);
 }

@@ -1,54 +1,32 @@
-<div
+<div class="sidebar" [class.sidebar--collapsed]="!layout.sidebarOpened()">
+  <div class="brand">
+    <div class="brand__logo">T</div>
 
-    class="sidebar"
+    <div class="brand__text">
+      <h2>Trycore</h2>
 
-    [class.sidebar--collapsed]="!layout.sidebarOpened()">
-
-
-    <div class="brand">
-
-        <div class="brand__logo">
-            T
-        </div>
-
-        <div class="brand__text">
-
-            <h2>Trycore</h2>
-
-            <small>EVM Dashboard</small>
-
-        </div>
-
+      <small>EVM Dashboard</small>
     </div>
+  </div>
 
-    <nav class="navigation">
+  <nav class="navigation">
+    @for (item of navigation; track item.id) {
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{
+          exact: item.exact
+        }"
+        class="navigation__item"
+      >
+        <span class="material-symbols-rounded">
+          {{ item.icon }}
+        </span>
 
-        @for(item of navigation; track item.id){
-
-            <a
-
-                [routerLink]="item.route"
-
-                routerLinkActive="active"
-
-                class="navigation__item">
-
-                <span class="material-symbols-rounded">
-
-                    {{item.icon}}
-
-                </span>
-
-                <span>
-
-                    {{item.label}}
-
-                </span>
-
-            </a>
-
-        }
-
-    </nav>
-
+        <span>
+          {{ item.label }}
+        </span>
+      </a>
+    }
+  </nav>
 </div>

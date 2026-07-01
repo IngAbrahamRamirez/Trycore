@@ -12,7 +12,8 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 
         icon:'dashboard',
 
-        route:APP_ROUTES.DASHBOARD
+        route:APP_ROUTES.DASHBOARD,
+        exact:true
 
     },
 
@@ -24,7 +25,8 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 
         icon:'folder',
 
-        route:APP_ROUTES.PROJECTS
+        route:APP_ROUTES.PROJECTS,
+        exact:true
 
     },
 
@@ -36,7 +38,8 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 
         icon:'task',
 
-        route:APP_ROUTES.ACTIVITIES
+        route:APP_ROUTES.ACTIVITIES,
+        exact:true
 
     },
 
@@ -48,7 +51,21 @@ export const NAVIGATION_ITEMS: NavigationItem[] = [
 
         icon:'analytics',
 
-        route:APP_ROUTES.METRICS
+        route:APP_ROUTES.METRICS,
+        exact:true
+
+    },
+
+    {
+
+        id:'users',
+
+        label:'Users',
+
+        icon:'group',
+
+        route:APP_ROUTES.USERS,
+        exact:true
 
     }
 
