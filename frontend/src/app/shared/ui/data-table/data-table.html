@@ -1,0 +1,43 @@
+<table class="table">
+
+    <thead>
+
+        <tr>
+
+            @for(column of model().columns; track column.field){
+
+                <th>
+
+                    {{ column.header }}
+
+                </th>
+
+            }
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        @for(row of model().data; track $index){
+
+            <tr>
+
+                @for(column of model().columns; track column.field){
+
+                    <td>
+
+                        {{ row[column.field] }}
+
+                    </td>
+
+                }
+
+            </tr>
+
+        }
+
+    </tbody>
+
+</table>

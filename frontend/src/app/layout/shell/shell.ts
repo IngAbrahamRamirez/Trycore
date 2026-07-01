@@ -32,8 +32,10 @@ import { LayoutState } from '../../core/state/layout.state';
     changeDetection:ChangeDetectionStrategy.OnPush
 
 })
+
 export class ShellComponent{
 
     protected readonly layout=inject(LayoutState);
+    
 
 }

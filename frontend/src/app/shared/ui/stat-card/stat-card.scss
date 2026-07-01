@@ -20,6 +20,8 @@
 
     box-shadow:$shadow-sm;
 
+    min-height:140px;
+
 }
 
 /* ---------------------------------- */
@@ -113,5 +115,79 @@
 .stat-card__trend--negative{
 
     color:$error;
+
+}
+
+.stat-card{
+
+    transition:.25s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:$shadow-md;
+
+}
+
+.stat-card__body{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:12px;
+
+}
+
+.stat-card__icon{
+
+    width:56px;
+
+    height:56px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:$radius-md;
+
+    background:rgba($primary,.08);
+
+}
+
+.stat-card__icon .material-symbols-rounded{
+
+    font-size:28px;
+
+}
+
+.stat-card__value{
+
+    font-size:2.2rem;
+
+    font-weight:700;
+
+    line-height:1;
+
+}
+
+.stat-card__footer{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.stat-card__footer small{
+
+    margin-left:4px;
+
+    color:$text-secondary;
 
 }

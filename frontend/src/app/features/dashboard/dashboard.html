@@ -1,0 +1,90 @@
+<app-page-header
+    [model]="header">
+</app-page-header>
+
+<div class="dashboard__metrics">
+
+    @for(metric of metrics; track metric.title){
+
+        <app-stat-card
+            [model]="metric">
+        </app-stat-card>
+
+    }
+
+</div>
+
+<div class="dashboard__content">
+
+    <div class="dashboard__left">
+
+        <app-section-card
+            title="Recent Projects"
+            subtitle="Latest registered projects">
+
+            <app-data-table
+                [model]="recentProjects">
+            </app-data-table>
+
+        </app-section-card>
+
+        <app-section-card
+            title="Recent Activities"
+            subtitle="Latest project activity">
+
+            <app-empty-state
+                title="No recent activities"
+                description="Activities will appear here when users start updating projects.">
+            </app-empty-state>
+
+        </app-section-card>
+
+    </div>
+
+    <div class="dashboard__right">
+
+        <app-section-card
+            title="Quick Actions"
+            subtitle="Frequently used">
+
+            <div class="quick-actions">
+
+                @for(action of quickActions; track action.title){
+
+                    <button
+                        type="button"
+                        class="quick-action">
+
+                        <span class="material-symbols-rounded">
+
+                            {{ action.icon }}
+
+                        </span>
+
+                        <div>
+
+                            <strong>
+
+                                {{ action.title }}
+
+                            </strong>
+
+                            <small>
+
+                                {{ action.description }}
+
+                            </small>
+
+                        </div>
+
+                    </button>
+
+                }
+
+            </div>
+
+        </app-section-card>
+
+    </div>
+
+</div>

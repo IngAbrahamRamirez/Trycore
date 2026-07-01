@@ -38,8 +38,17 @@ header {
 }
 
 .page {
-  padding: var(--page-padding);
-  overflow: auto;
+  display:flex;
+
+    flex-direction:column;
+
+    width:100%;
+
+    min-width:0;
+
+    overflow:auto;
+
+    padding:var(--page-padding);
 }
 
 footer {

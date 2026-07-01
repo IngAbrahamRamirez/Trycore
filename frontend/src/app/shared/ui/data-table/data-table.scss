@@ -1,0 +1,51 @@
+@use "../../../styles" as *;
+
+.table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+thead{
+
+    background:$gray-100;
+
+}
+
+th{
+
+    text-align:left;
+
+    padding:16px;
+
+    font-weight:600;
+
+    color:$text-secondary;
+
+    font-size:.9rem;
+
+}
+
+td{
+
+    padding:16px;
+
+    border-top:1px solid $border-color;
+
+    color:$text-primary;
+
+}
+
+tbody tr{
+
+    transition:.2s;
+
+}
+
+tbody tr:hover{
+
+    background:$gray-50;
+
+}
