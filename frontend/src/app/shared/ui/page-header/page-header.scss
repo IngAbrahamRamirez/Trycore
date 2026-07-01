@@ -62,9 +62,6 @@
 
     color:$text-primary;
 
-    margin-top:1rem;
-    margin-left:2rem;
-
 }
 
 .page-header__titles p{
@@ -76,26 +73,6 @@
     line-height:1.6;
 
     color:$text-secondary;
-
-    margin-top:auto;
-    margin-left:2rem;
-
-}
-
-.page-header__actions{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    flex-wrap:wrap;
-
-    flex-shrink:0;
-
-    margin-right:2rem;
-    margin-top:2rem;
 
 }
 
