@@ -17,7 +17,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.Parameter;
 
 @RestController
 @RequestMapping("/api/users")
@@ -70,7 +69,7 @@ public class UserController {
     })
     @GetMapping("/{id}")
     public UserResponse findById(
-            @Parameter(description = "User identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a") @PathVariable UUID id) {
+            @PathVariable("id") UUID id) {
 
         return userService.findById(id);
     }
@@ -84,7 +83,7 @@ public class UserController {
     })
 
     public UserResponse update(
-            @Parameter(description = "User identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a") @PathVariable UUID id,
+            @PathVariable("id") UUID id,
             @Valid @RequestBody
 
             @io.swagger.v3.oas.annotations.parameters.RequestBody(
@@ -106,7 +105,7 @@ public class UserController {
     })
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(
-            @Parameter(description = "User identifier", example = "4efaf7d0-87c2-4a6f-a6d4-6b1f7e2d4b8a") @PathVariable UUID id) {
+            @PathVariable("id") UUID id) {
 
         userService.delete(id);
     }
